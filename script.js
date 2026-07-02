@@ -59,26 +59,26 @@ function createCountdownHTML() {
                 <div class="countdown-timer">
                     <div class="time-unit">
                         <span class="time-value" id="days">00</span>
-                        <span class="time-label">Days</span>
+                        <span class="time-label">DAYS</span>
                     </div>
                     <div class="time-unit">
                         <span class="time-value" id="hours">00</span>
-                        <span class="time-label">Hours</span>
+                        <span class="time-label">HOURS</span>
                     </div>
                     <div class="time-unit">
                         <span class="time-value" id="minutes">00</span>
-                        <span class="time-label">Minutes</span>
+                        <span class="time-label">MINUTES</span>
                     </div>
                     <div class="time-unit">
                         <span class="time-value" id="seconds">00</span>
-                        <span class="time-label">Seconds</span>
+                        <span class="time-label">SECONDS</span>
                     </div>
                 </div>
                 <p class="countdown-message">
                     <strong>✨ Đang chờ ngày đặc biệt của em bé Chloe ✨</strong><br>
-                    Hãy quay lại vào 16/07/1997<br><br>
-                    On 16.07.2026: Moon Phase: Waxing Gibbous • 87.3% Visible<br>
-                    • Moonrise 4:22 PM • Moonset 12:57 AM <br>
+                    Hãy quay lại vào <strong>16.07.2026</strong><br><br>
+                    On 16.07.1997, Moon phase: Waxing Gibbous • 87.3% Visible<br>
+                    Moonrise 4:22 PM • Moonset 12:57 AM
                 </p>
             </div>
         </div>
