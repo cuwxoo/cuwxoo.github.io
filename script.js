@@ -52,8 +52,8 @@ function initApp() {
 function createCountdownHTML() {
     return `
         <div class="countdown-container">
-            <h1>✨ Sắp tới ✨</h1>
-            <p class="countdown-message">Chuẩn bị cho một cái gì đó tuyệt vời...</p>
+            <h1>✨ Đếm ngược ngày thế giới của anh có thêm một thiên thần...  ✨</h1>
+            <p class="countdown-message">Mỗi giây trôi qua trên chiếc đồng hồ này đều mang theo từng nhịp đập mong chờ của chúng ta. Một điều bất ngờ nhỏ bé, đong đầy yêu thương đang được chuẩn bị để dành riêng cho tuổi mới của em bé Chloe. Đợi anh/em một chút nhé, tình yêu của anh! ❤️</p>
             <div class="countdown-timer">
                 <div class="time-unit">
                     <span class="time-value" id="days">0</span>
