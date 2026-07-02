@@ -118,7 +118,7 @@ function updateCountdown() {
     if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
     if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
 }
-
+checkInvitationButton();
 // Tạo HTML cho gallery
 function createGalleryHTML() {
     return `
