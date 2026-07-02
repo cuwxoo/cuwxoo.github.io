@@ -50,6 +50,7 @@ function initApp() {
 
 // Tạo HTML cho countdown
 // Tạo HTML cho countdown (đã cập nhật)
+// Tạo HTML cho countdown
 function createCountdownHTML() {
     return `
         <div class="countdown-container">
@@ -78,16 +79,17 @@ function createCountdownHTML() {
                     </div>
                 </div>
                 <p class="countdown-message">
-                    ✨ Waxing Gibbous • 87.3% Visible ✨<br>
-                    16.07.2026 • Moonrise: 4:22 PM • Moonset: 12:57 AM<br>
-                    Đang chờ ngày đặc biệt của em bé Chloe...
+                    <strong>Waxing Gibbous • 87.3% Visible</strong><br>
+                    16.07.2026 • Moonrise 4:22 PM • Moonset 12:57 AM<br><br>
+                    ✨ Đang chờ ngày đặc biệt của em bé Chloe ✨
                 </p>
-                <button class="countdown-btn" onclick="showInvitationEarly()">MỞ THƯ MỜI</button>
+                <button class="countdown-btn" id="openInvitationBtn" disabled>
+                    MỞ THƯ MỜI 💌 <span style="font-size:0.8em">(sau 16/7/2026)</span>
+                </button>
             </div>
         </div>
     `;
 }
-
 // Cập nhật countdown
 function updateCountdown() {
     const now = new Date().getTime();
@@ -373,3 +375,22 @@ function showInvitationEarly() {
     const app = document.getElementById('app');
     app.innerHTML = createClosedEnvelopeHTML();
 }
+// Kiểm tra và kích hoạt nút mở thư mời
+function checkInvitationButton() {
+    const now = new Date().getTime();
+    const btn = document.getElementById('openInvitationBtn');
+    
+    if (btn) {
+        if (now >= targetDate) {
+            btn.disabled = false;
+            btn.textContent = "MỞ THƯ MỜI 💌";
+            btn.onclick = () => {
+                const app = document.getElementById('app');
+                app.innerHTML = createClosedEnvelopeHTML();
+            };
+        }
+    }
+}
+
+// Gọi hàm kiểm tra sau khi tạo countdown
+// Thêm vào cuối hàm initApp() hoặc sau updateCountdown
