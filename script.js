@@ -46,7 +46,7 @@ function initApp() {
     }
 }
 
-// Tạo HTML cho countdown (ẨN HOÀN TOÀN nút mở thư mời)
+// Tạo HTML cho countdown
 function createCountdownHTML() {
     return `
         <div class="countdown-container">
@@ -75,14 +75,10 @@ function createCountdownHTML() {
                     </div>
                 </div>
                 <p class="countdown-message">
-                <strong>✨ Đang chờ ngày đặc biệt của em bé Chloe ✨</strong><br>
-                Hãy quay lại vào 16/07/2026
-                
-                    Waxing Gibbous • 87.3% Visible
-                    16.07.2026 
-                    • Moonrise 4:22 PM 
-                    • Moonset 12:57 AM<br><br>
-                    
+                    <strong>✨ Đang chờ ngày đặc biệt của em bé Chloe ✨</strong><br>
+                    Hãy quay lại vào 16/07/1997<br><br>
+                    On 16.07.2026: Moon Phase: Waxing Gibbous • 87.3% Visible<br>
+                    • Moonrise 4:22 PM • Moonset 12:57 AM <br>
                 </p>
             </div>
         </div>
