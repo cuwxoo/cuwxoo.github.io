@@ -76,7 +76,7 @@ function createCountdownHTML() {
                 </div>
                 <p class="countdown-message">
                     <strong>✨ Đang chờ ngày đặc biệt của em bé Chloe ✨</strong><br>
-                    Hãy quay lại vào <strong>16.07.2026</strong><br><br>
+                    <strong> Hãy quay lại vào 16.07.2026</strong><br><br>
                     On 16.07.1997, Moon phase: Waxing Gibbous • 87.3% Visible<br>
                     Moonrise 4:22 PM • Moonset 12:57 AM
                 </p>
