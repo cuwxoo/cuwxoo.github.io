@@ -46,7 +46,6 @@ function initApp() {
     }
 }
 
-// Tạo HTML cho countdown (không có nút mở thư mời)
 // Tạo HTML cho countdown (ẨN HOÀN TOÀN nút mở thư mời)
 function createCountdownHTML() {
     return `
@@ -76,11 +75,15 @@ function createCountdownHTML() {
                     </div>
                 </div>
                 <p class="countdown-message">
-                    <strong>Waxing Gibbous • 87.3% Visible</strong><br>
-                    16.07.2026 • Moonrise 4:22 PM • Moonset 12:57 AM<br><br>
-                    ✨ Đang chờ ngày đặc biệt của em bé Chloe ✨
+                <strong>✨ Đang chờ ngày đặc biệt của em bé Chloe ✨</strong><br>
+                Hãy quay lại vào 16/07/2026
+                
+                    Waxing Gibbous • 87.3% Visible
+                    16.07.2026 
+                    • Moonrise 4:22 PM 
+                    • Moonset 12:57 AM<br><br>
+                    
                 </p>
-                <!-- Nút đã bị ẩn hoàn toàn -->
             </div>
         </div>
     `;
