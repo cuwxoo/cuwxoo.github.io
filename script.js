@@ -49,11 +49,13 @@ function initApp() {
 }
 
 // Tạo HTML cho countdown (NASA style với mặt trăng)
+// Tạo HTML cho countdown (NASA style)
 function createCountdownHTML() {
     return `
         <div class="countdown-container nasa-style">
             <div class="mission-header">
-                <img src="image.png" alt="Mặt Trăng" class="moon-image">
+                <img src="https://phasesmoon.com/moonpng/220/moon-phase-11.webp" 
+                     alt="Mặt Trăng" class="moon-image">
                 <div class="mission-text">
                     <div class="nasa-logo">🌕 BIRTHDAY MISSION</div>
                     <h1 class="mission-title">SỰ KIỆN ĐẶC BIỆT</h1>
