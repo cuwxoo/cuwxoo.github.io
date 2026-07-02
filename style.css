@@ -15,34 +15,74 @@ body {
 
 /* ===== COUNTDOWN SECTION ===== */
 .countdown-container {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
     color: white;
     animation: fadeIn 1s ease-in;
+    padding: 0 2rem;
+}
+
+.moon-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 300px;
+}
+
+.moon-image {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #e8e8e8, #888, #222);
+    box-shadow: 0 0 100px rgba(255, 255, 255, 0.1),
+                inset -30px -30px 60px rgba(0, 0, 0, 0.8);
+    animation: moonFloat 3s ease-in-out infinite;
+    position: relative;
+}
+
+.moon-image::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle cx="50" cy="40" r="8" fill="black" opacity="0.3"/><circle cx="80" cy="60" r="12" fill="black" opacity="0.4"/><circle cx="120" cy="50" r="10" fill="black" opacity="0.35"/><circle cx="160" cy="80" r="9" fill="black" opacity="0.3"/><circle cx="40" cy="120" r="11" fill="black" opacity="0.4"/><circle cx="100" cy="140" r="13" fill="black" opacity="0.35"/><circle cx="150" cy="120" r="8" fill="black" opacity="0.3"/><circle cx="70" cy="100" r="10" fill="black" opacity="0.4"/><circle cx="130" cy="160" r="9" fill="black" opacity="0.3"/></svg>');
+    background-size: cover;
+    border-radius: 50%;
+}
+
+.countdown-content {
+    flex: 1;
+    text-align: left;
 }
 
 .countdown-container h1 {
-    font-size: 3.5rem;
-    margin-bottom: 2rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    color: rgba(255, 255, 255, 0.8);
     animation: slideDown 0.8s ease-out;
 }
 
 .countdown-timer {
     display: flex;
-    gap: 2rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 3rem;
+    gap: 3rem;
+    margin-bottom: 2rem;
+    align-items: flex-start;
 }
 
 .time-unit {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 2rem 1.5rem;
-    border-radius: 15px;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    min-width: 100px;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    border: none;
     animation: scaleUp 0.6s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .time-unit:nth-child(1) { animation-delay: 0.1s; }
@@ -51,24 +91,57 @@ body {
 .time-unit:nth-child(4) { animation-delay: 0.4s; }
 
 .time-value {
-    font-size: 2.5rem;
-    font-weight: bold;
+    font-size: 4rem;
+    font-weight: 300;
+    letter-spacing: 2px;
     display: block;
-    margin-bottom: 0.5rem;
-    color: #ffd700;
+    margin-bottom: 0.8rem;
+    color: #ffffff;
+    font-family: 'Courier New', monospace;
 }
 
 .time-label {
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    opacity: 0.9;
+    letter-spacing: 3px;
+    opacity: 0.7;
+    font-weight: 300;
 }
 
 .countdown-message {
-    font-size: 1.3rem;
-    opacity: 0.9;
-    animation: pulse 2s infinite;
+    font-size: 1rem;
+    opacity: 0.8;
+    line-height: 1.6;
+    animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+.countdown-btn {
+    margin-top: 2rem;
+    padding: 1rem 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: transparent;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 300;
+}
+
+.countdown-btn:hover {
+    border-color: white;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+@keyframes moonFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
 }
 
 /* ===== GALLERY SECTION ===== */
