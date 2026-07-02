@@ -140,7 +140,44 @@ body {
     from { opacity: 0; }
     to { opacity: 1; }
 }
-
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .countdown-container {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1rem;
+        text-align: center;
+    }
+    
+    .moon-image {
+        width: 260px;
+        height: 260px;
+    }
+    
+    .countdown-timer {
+        gap: 1.2rem;
+        justify-content: center;
+    }
+    
+    .time-value {
+        font-size: 2.8rem;
+    }
+    
+    .time-label {
+        font-size: 0.75rem;
+    }
+    
+    .countdown-message {
+        font-size: 1rem;
+        line-height: 1.6;
+        padding: 0 10px;
+    }
+    
+    h1 {
+        font-size: 1.4rem;
+        letter-spacing: 3px;
+    }
+}
 /* Phần còn lại giữ nguyên (gallery, invitation...) */
 .gallery-container, .envelope-wrapper, .invitation-container {
     /* ... giữ nguyên code cũ của bạn */
