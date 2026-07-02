@@ -6,69 +6,167 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #0a0a0a;
+    color: white;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    position: relative;
 }
 
-/* ===== COUNTDOWN SECTION ===== */
-.countdown-container {
-    text-align: center;
-    color: white;
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 70%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* ===== NASA-STYLE COUNTDOWN SECTION ===== */
+.countdown-container.nasa-style {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
     animation: fadeIn 1s ease-in;
 }
 
-.countdown-container h1 {
-    font-size: 3.5rem;
+.mission-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
     margin-bottom: 2rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    animation: slideDown 0.8s ease-out;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.moon-image {
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 60px rgba(255, 255, 255, 0.3),
+                0 0 120px rgba(200, 200, 255, 0.2);
+    border: 4px solid rgba(255,255,255,0.2);
+    flex-shrink: 0;
+}
+
+.mission-text {
+    text-align: center;
+    flex: 1;
+    min-width: 300px;
+}
+
+.nasa-logo {
+    font-size: 1.4rem;
+    letter-spacing: 4px;
+    font-weight: 700;
+    color: #ffd700;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px #ffd700;
+}
+
+.mission-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+}
+
+.launching-on {
+    font-size: 1.4rem;
+    opacity: 0.9;
+    margin: 0.8rem 0 0.5rem;
+    letter-spacing: 3px;
+}
+
+.target-date {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #ffd700;
+    letter-spacing: 6px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    margin-bottom: 1rem;
 }
 
 .countdown-timer {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 3rem;
+    margin: 1.5rem 0 3rem;
+    width: 100%;
 }
 
 .time-unit {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 2rem 1.5rem;
-    border-radius: 15px;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    min-width: 100px;
-    animation: scaleUp 0.6s ease-out;
+    background: rgba(30, 30, 50, 0.85);
+    backdrop-filter: blur(12px);
+    padding: 1.8rem 1.2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    min-width: 110px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
 }
 
-.time-unit:nth-child(1) { animation-delay: 0.1s; }
-.time-unit:nth-child(2) { animation-delay: 0.2s; }
-.time-unit:nth-child(3) { animation-delay: 0.3s; }
-.time-unit:nth-child(4) { animation-delay: 0.4s; }
+.time-unit:hover {
+    transform: translateY(-5px);
+}
 
 .time-value {
-    font-size: 2.5rem;
-    font-weight: bold;
+    font-size: 3.2rem;
+    font-weight: 700;
     display: block;
-    margin-bottom: 0.5rem;
-    color: #ffd700;
+    margin-bottom: 0.4rem;
+    color: #ffffff;
+    font-family: monospace;
+    letter-spacing: 2px;
 }
 
 .time-label {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    opacity: 0.9;
+    letter-spacing: 3px;
+    opacity: 0.75;
+    font-weight: 500;
 }
 
-.countdown-message {
+.mission-footer {
+    margin-top: 1rem;
+}
+
+.watch-btn {
+    background: linear-gradient(135deg, #ffd700, #ffaa00);
+    color: #0a0a0a;
+    border: none;
+    padding: 1rem 3rem;
     font-size: 1.3rem;
-    opacity: 0.9;
-    animation: pulse 2s infinite;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+    transition: all 0.3s ease;
+    letter-spacing: 2px;
+}
+
+.watch-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
+}
+
+.watch-btn:active {
+    transform: scale(0.98);
 }
 
 /* ===== GALLERY SECTION ===== */
