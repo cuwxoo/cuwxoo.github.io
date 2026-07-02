@@ -178,7 +178,7 @@ body {
         letter-spacing: 3px;
     }
 }
-/* Phần còn lại giữ nguyên (gallery, invitation...) */
+
 .gallery-container, .envelope-wrapper, .invitation-container {
     /* ... giữ nguyên code cũ của bạn */
 }
