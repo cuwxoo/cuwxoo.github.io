@@ -48,29 +48,41 @@ function initApp() {
     }
 }
 
-// Tạo HTML cho countdown
+// Tạo HTML cho countdown (NASA style với mặt trăng)
 function createCountdownHTML() {
     return `
-        <div class="countdown-container">
-            <h1>✨ Đếm ngược ngày thế giới của anh có thêm một thiên thần...  ✨</h1>
-            <p class="countdown-message">Mỗi giây trôi qua trên chiếc đồng hồ này đều mang theo từng nhịp đập mong chờ của chúng ta. Một điều bất ngờ nhỏ bé, đong đầy yêu thương đang được chuẩn bị để dành riêng cho tuổi mới của em bé Chloe. Đợi anh/em một chút nhé, tình yêu của anh! ❤️</p>
+        <div class="countdown-container nasa-style">
+            <div class="mission-header">
+                <img src="image.png" alt="Mặt Trăng" class="moon-image">
+                <div class="mission-text">
+                    <div class="nasa-logo">🌕 BIRTHDAY MISSION</div>
+                    <h1 class="mission-title">SỰ KIỆN ĐẶC BIỆT</h1>
+                    <p class="launching-on">ĐANG KHỞI HÀNH VÀO NGÀY</p>
+                    <div class="target-date">16.07.2026</div>
+                </div>
+            </div>
+            
             <div class="countdown-timer">
                 <div class="time-unit">
-                    <span class="time-value" id="days">0</span>
-                    <span class="time-label">Ngày</span>
+                    <span class="time-value" id="days">00</span>
+                    <span class="time-label">NGÀY</span>
                 </div>
                 <div class="time-unit">
-                    <span class="time-value" id="hours">0</span>
-                    <span class="time-label">Giờ</span>
+                    <span class="time-value" id="hours">00</span>
+                    <span class="time-label">GIỜ</span>
                 </div>
                 <div class="time-unit">
-                    <span class="time-value" id="minutes">0</span>
-                    <span class="time-label">Phút</span>
+                    <span class="time-value" id="minutes">00</span>
+                    <span class="time-label">PHÚT</span>
                 </div>
                 <div class="time-unit">
-                    <span class="time-value" id="seconds">0</span>
-                    <span class="time-label">Giây</span>
+                    <span class="time-value" id="seconds">00</span>
+                    <span class="time-label">GIÂY</span>
                 </div>
+            </div>
+            
+            <div class="mission-footer">
+                <button onclick="showInvitationEarly()" class="watch-btn">MỞ THƯ MỜI ✨</button>
             </div>
         </div>
     `;
