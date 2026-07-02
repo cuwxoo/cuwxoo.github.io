@@ -35,13 +35,21 @@ body {
     width: 350px;
     height: 350px;
     border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #e8e8e8, #888, #222);
-    box-shadow: 0 0 100px rgba(255, 255, 255, 0.1),
-                inset -30px -30px 60px rgba(0, 0, 0, 0.8);
+    
+    /* Dịch chuyển tâm sáng sang phải để thể hiện phần trăng được chiếu sáng */
+    background: radial-gradient(circle at 75% 45%, #e8e8e8 10%, #999 70%, #222 100%);
+    
+    /* 1. Hào quang tỏa sáng nhẹ bên ngoài (box-shadow ngoài)
+      2. Bóng tối (inset) phủ khoảng 15-20% ở rìa bên trái để tạo hình Trăng khuyết lồi
+    */
+    box-shadow: 0 0 100px rgba(255, 255, 255, 0.15),
+                inset 80px 0px 50px -15px rgba(0, 0, 0, 0.95);
+                
     animation: moonFloat 3s ease-in-out infinite;
     position: relative;
 }
 
+/* Giữ nguyên phần tạo hố miệng núi lửa */
 .moon-image::before {
     content: '';
     position: absolute;
