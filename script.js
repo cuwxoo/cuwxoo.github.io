@@ -1,5 +1,5 @@
 // Target date: July 16, 2026 at 00:00 (midnight)
-const targetDate = new Date('2026-07-02T00:00:00').getTime();
+const targetDate = new Date('2026-07-16T00:00:00').getTime();
 
 const gallerySlides = [
     { 
