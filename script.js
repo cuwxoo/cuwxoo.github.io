@@ -1,37 +1,20 @@
 // Target date: July 16, 2026 at 00:00 (midnight)
-const targetDate = new Date('2026-07-16T00:00:00').getTime();
+const targetDate = new Date('2026-07-03T00:00:00').getTime();
 
 const gallerySlides = [
-    { 
-        image: 'https://images.unsplash.com/photo-1579353977991-54fc0f51b1a8?w=800&q=80', 
-        caption: 'Chương 1: Khởi đầu',
-        blessing: '✨ Mỗi hành trình đều bắt đầu từ một bước nhỏ ✨'
-    },
-    { 
-        image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80', 
-        caption: 'Chương 2: Hành trình',
-        blessing: '🌈 Những chuyến đi cùng nhau tạo nên kỷ niệm đẹp 🌈'
-    },
-    { 
-        image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&q=80', 
-        caption: 'Chương 3: Thách thức',
-        blessing: '💪 Vượt qua khó khăn cùng nhau mới là sức mạnh 💪'
-    },
-    { 
-        image: 'https://images.unsplash.com/photo-1495716519097-d71bc96db9d7?w=800&q=80', 
-        caption: 'Chương 4: Tia sáng hy vọng',
-        blessing: '🌟 Hy vọng luôn chiếu sáng những ngày tối tăm 🌟'
-    },
-    { 
-        image: 'https://images.unsplash.com/photo-1511379938547-c1f69b13d835?w=800&q=80', 
-        caption: 'Chương 5: Kết thúc vinh quang',
-        blessing: '🎉 Những khoảnh khắc đẹp sẽ mãi in đậm trong lòng 🎉'
-    }
+    { image: 'https://images.unsplash.com/photo-1782612920864-30b1004aadd4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', caption: 'Chương 1: Khởi đầu' },
+    { image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80', caption: 'Chương 2: Hành trình' },
+    { image: 'https://images.unsplash.com/photo-1782763558195-caa1373561c2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', caption: 'Chương 3: Thách thức' },
+    { image: 'https://images.unsplash.com/photo-1783003530150-7afebe59feb5?q=80&w=1175&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', caption: 'Chương 4: Tia sáng hy vọng' },
+    { image: 'https://images.unsplash.com/photo-1781285909142-b335421c2fdb?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', caption: 'Chương 5: Kết thúc vinh quang' },
+    { image: 'https://images.unsplash.com/photo-1782141748753-42e6d6b1abab?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', caption: 'Chương 6: Kết thúc vinh quang' },
+    { image: 'https://images.unsplash.com/photo-1782766330033-67ef615c3741?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', caption: 'Chương 7: Kết thúc vinh quang' },
+    { image: 'https://images.unsplash.com/photo-1782791895550-1522288a20f6?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', caption: 'Chương 8: Kết thúc vinh quang' }
 ];
 
 let currentSlide = 0;
-let showingInvitation = false;
 
+// Khởi tạo
 function initApp() {
     const app = document.getElementById('app');
     const now = new Date().getTime();
@@ -42,32 +25,66 @@ function initApp() {
         setInterval(updateCountdown, 1000);
     } else {
         app.innerHTML = createGalleryHTML();
+        document.body.classList.add('gallery-mode');
         initGallery();
     }
+}
+ initPlanetClicks();
+// Khởi tạo Particles.js
+function initParticles() {
+    particlesJS('particles-js', {
+        "particles": {
+            "number": { "value": 120, "density": { "enable": true, "value_area": 800 } },
+            "color": { "value": "#ffffff" },
+            "shape": { "type": "circle" },
+            "opacity": { "value": 0.6, "random": true },
+            "size": { "value": 2.5, "random": true },
+            "line_linked": { "enable": false },
+            "move": {
+                "enable": true,
+                "speed": 0.4,
+                "direction": "none",
+                "random": true,
+                "straight": false,
+                "out_mode": "out"
+            }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": { "enable": true, "mode": "bubble" },
+                "onclick": { "enable": true, "mode": "repulse" },
+                "resize": true
+            }
+        },
+        "retina_detect": true
+    });
 }
 
 // Countdown
 function createCountdownHTML() {
     return `
         <div class="countdown-container">
-            <div class="moon-section">
-                <img src="https://phasesmoon.com/moonpng/220/moon-phase-11.webp" alt="Moon Phase" class="moon-image">
-            </div>
+       
             <div class="countdown-content">
-                <h1>🎂 NGÀY ĐẶC BIỆT SẮP TỚI 🎂</h1>
+                <h1>MISSION LAUNCHING ON</h1>
                 <div class="countdown-timer">
                     <div class="time-unit"><span class="time-value" id="days">00</span><span class="time-label">DAYS</span></div>
                     <div class="time-unit"><span class="time-value" id="hours">00</span><span class="time-label">HOURS</span></div>
                     <div class="time-unit"><span class="time-value" id="minutes">00</span><span class="time-label">MINUTES</span></div>
                     <div class="time-unit"><span class="time-value" id="seconds">00</span><span class="time-label">SECONDS</span></div>
                 </div>
+		<div class="moon-section">
+                <img src="https://phasesmoon.com/moonpng/220/moon-phase-11.webp" alt="Moon Phase" class="moon-image">
+            </div>
                 <p class="countdown-message">
                     <strong>✨ Đang chờ ngày đặc biệt của em bé Chloe ✨</strong><br>
                     Hãy quay lại vào <strong>16.07.2026</strong><br><br>
                     Wednesday, July 16, 1997<br>
-                    Moon phase: Waxing Gibbous • 87.3% Visible<br>
+		    Moon phase: Waxing Gibbous • 87.3% Visible<br>
                     Moonrise 4:22 PM • Moonset 12:57 AM<br>
-                    Horoscope is ♋ Cancer
+		    Horoscope is ♋ Cancer
+
                 </p>
             </div>
         </div>
@@ -77,10 +94,7 @@ function createCountdownHTML() {
 function updateCountdown() {
     const now = new Date().getTime();
     const distance = targetDate - now;
-    if (distance < 0) { 
-        location.reload(); 
-        return; 
-    }
+    if (distance < 0) { location.reload(); return; }
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -93,107 +107,173 @@ function updateCountdown() {
     document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
 }
 
-// Gallery
+// Tạo HTML cho gallery (có nút điều hướng ở dưới)
+// Tạo Gallery sau 16/07/2026 - Hệ Mặt Trời 8 hành tinh
+// Tạo Gallery - Hệ Mặt Trời 8 hành tinh
 function createGalleryHTML() {
     return `
-        <div class="gallery-container">
-            <div class="gallery-header">
-                <h1>💕 Của Chúng Tôi 💕</h1>
-                <p>Một hành trình đầy ý nghĩa</p>
+        <div class="solar-system-container">
+            <div class="title-section">
+                <h1>Happy Birthday Embe Chloe</h1>
+		<p>Mỗi hành tinh ẩn chứa một điều bí mật nho nhỏ</p>
+                <p>Chạm vào các hành tinh để khám phá</p>
             </div>
             
-            <div class="carousel-wrapper">
-                <div class="carousel-container">
-                    ${gallerySlides.map((slide, index) => `
-                        <div class="carousel-slide ${index === 0 ? 'active' : ''}">
-                            <img src="${slide.image}" alt="${slide.caption}">
-                            <div class="slide-caption">${slide.caption}</div>
-                            <div class="slide-blessing">${slide.blessing}</div>
-                        </div>
-                    `).join('')}
-                    
-                    <div class="blessing-slide">
-                        <div class="blessing-text">
-                            🎉 Cảm ơn bạn đã đồng hành! 🎉<br>
-                            Một ngày đặc biệt đang chờ chúng ta
-                        </div>
-                        <button class="open-letter-btn" onclick="showEnvelope()">Mở Thư Mời 💌</button>
-                    </div>
-                </div>
+            <div class="solar-system">
+                <div class="sun"></div>
                 
-                <div class="carousel-controls">
-                    <button class="carousel-btn" id="prevBtn">← Trước</button>
-                    <div class="carousel-indicators">
-                        ${gallerySlides.map((_, index) => `
-                            <div class="indicator ${index === 0 ? 'active' : ''}" 
-                                 data-slide="${index}"></div>
-                        `).join('')}
-                    </div>
-                    <button class="carousel-btn" id="nextBtn">Tiếp →</button>
-                </div>
+                <div class="orbit orbit-1"><div class="planet real-planet" data-index="0">🌑</div></div>
+                <div class="orbit orbit-2"><div class="planet real-planet" data-index="1">🪐</div></div>
+                <div class="orbit orbit-3"><div class="planet real-planet" data-index="2">🌍</div></div>
+                <div class="orbit orbit-4"><div class="planet real-planet" data-index="3">🔴</div></div>
+                <div class="orbit orbit-5"><div class="planet real-planet" data-index="4">🟠</div></div>
+                <div class="orbit orbit-6"><div class="planet real-planet" data-index="5">🟡</div></div>
+                <div class="orbit orbit-7"><div class="planet real-planet" data-index="6">🔵</div></div>
+                <div class="orbit orbit-8"><div class="planet real-planet" data-index="7">🟣</div></div>
             </div>
         </div>
     `;
 }
 
-function initGallery() {
+// Khởi tạo click sau khi render
+function initPlanetClicks() {
     setTimeout(() => {
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const indicators = document.querySelectorAll('.indicator');
-
-        if (prevBtn) prevBtn.addEventListener('click', previousSlide);
-        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => goToSlide(index));
+        // Start orbit animations
+        document.querySelectorAll('.orbit').forEach(orbit => {
+            orbit.classList.add('animate');
         });
         
-        setInterval(autoNextSlide, 8000);
+        document.querySelectorAll('.real-planet').forEach(planet => {
+            planet.style.cursor = 'pointer';
+            planet.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const index = parseInt(this.getAttribute('data-index'));
+                showPlanetPopup(index);
+            });
+        });
     }, 100);
 }
 
+function showPlanetPopup(index) {
+    const slide = gallerySlides[index % gallerySlides.length];
+    
+    const popup = document.createElement('div');
+    popup.className = 'planet-popup';
+    popup.innerHTML = `
+        <div class="popup-content">
+            <button class="close-popup">✕</button>
+            <img src="${slide.image}" alt="${slide.caption}">
+            <h2>${slide.title || slide.caption}</h2>
+            <p>${slide.caption}</p>
+            <p>Chương ${index + 1} của hành trình đặc biệt</p>
+        </div>
+    `;
+    
+    document.body.appendChild(popup);
+
+    // Close button
+    const closeBtn = popup.querySelector('.close-popup');
+    closeBtn.addEventListener('click', () => popup.remove());
+}
+
+
+
+// Khởi tạo gallery
+function initGallery() {
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const indicators = document.querySelectorAll('.indicator');
+    
+    prevBtn.addEventListener('click', previousSlide);
+    nextBtn.addEventListener('click', nextSlide);
+    
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => goToSlide(index));
+    });
+    
+    // Auto-play carousel (tùy chọn)
+    setInterval(nextSlide, 8000); // Tự động chuyển slide sau 8 giây
+}
+
+// Chuyển sang slide tiếp theo
 function nextSlide() {
-    currentSlide = (currentSlide + 1) % (gallerySlides.length + 1);
-    updateSlide();
+    if (showingInvitation) {
+        currentSlide = 0;
+        showingInvitation = false;
+        const app = document.getElementById('app');
+        app.innerHTML = createGalleryHTML();
+        initGallery();
+        return;
+    }
+    
+    currentSlide = currentSlide + 1;
+    
+    // Nếu vượt quá số lượng slide -> hiển thị thư mời
+    if (currentSlide >= gallerySlides.length) {
+        showInvitation();
+    } else {
+        updateSlide();
+    }
 }
-
+ 
+// Quay lại slide trước
 function previousSlide() {
-    currentSlide = (currentSlide - 1 + gallerySlides.length + 1) % (gallerySlides.length + 1);
+    if (showingInvitation) {
+        showingInvitation = false;
+        currentSlide = gallerySlides.length - 1;
+        const app = document.getElementById('app');
+        app.innerHTML = createGalleryHTML();
+        initGallery();
+        return;
+    }
+    
+    currentSlide = currentSlide - 1;
+    
+    if (currentSlide < 0) {
+        currentSlide = gallerySlides.length - 1;
+    }
+    
     updateSlide();
 }
-
-function autoNextSlide() {
-    currentSlide = (currentSlide + 1) % (gallerySlides.length + 1);
-    updateSlide();
+ 
+// Hiển thị thư mời sinh nhật (thiệp đóng trước)
+function showInvitation() {
+    showingInvitation = true;
+    const app = document.getElementById('app');
+    app.innerHTML = createClosedEnvelopeHTML();
 }
-
+ 
+// Mở thiệp
+function openEnvelope() {
+    const envelope = document.getElementById('envelopeContainer');
+    envelope.classList.add('opened');
+    
+    // Sau khi animation xong, hiển thị nội dung thư mời
+    setTimeout(() => {
+        const app = document.getElementById('app');
+        app.innerHTML = createInvitationHTML();
+        createConfetti();
+    }, 800);
+}
+ 
+// Đi tới slide cụ thể
 function goToSlide(index) {
     currentSlide = index;
     updateSlide();
 }
-
+ 
+// Cập nhật hiển thị slide
 function updateSlide() {
     const slides = document.querySelectorAll('.carousel-slide');
-    const blessingSlide = document.querySelector('.blessing-slide');
     const indicators = document.querySelectorAll('.indicator');
-
+    
     slides.forEach((slide, index) => {
         slide.classList.remove('active');
+        if (index === currentSlide) {
+            slide.classList.add('active');
+        }
     });
     
-    if (blessingSlide) {
-        blessingSlide.classList.remove('active');
-    }
-
-    if (currentSlide < gallerySlides.length) {
-        slides[currentSlide].classList.add('active');
-    } else {
-        if (blessingSlide) {
-            blessingSlide.classList.add('active');
-        }
-    }
-
     indicators.forEach((indicator, index) => {
         indicator.classList.remove('active');
         if (index === currentSlide) {
@@ -201,96 +281,10 @@ function updateSlide() {
         }
     });
 }
-
-function showEnvelope() {
-    const app = document.getElementById('app');
-    app.innerHTML = createClosedEnvelopeHTML();
-}
-
-function createClosedEnvelopeHTML() {
-    return `
-        <div class="envelope-wrapper">
-            <div class="envelope-container" id="envelopeContainer" onclick="openEnvelope()">
-                <div class="envelope-flap"></div>
-                <div class="envelope-front">
-                    <div class="envelope-content">
-                        <div class="envelope-icon">💌</div>
-                        <div class="envelope-text">Thư Mời Cho Bạn</div>
-                        <div class="envelope-subtext">Một điều kỳ diệu đang chờ bạn</div>
-                        <div class="envelope-hint">✨ Bấm vào để mở thư ✨</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-function openEnvelope() {
-    const envelope = document.getElementById('envelopeContainer');
-    envelope.classList.add('opened');
-    
-    setTimeout(() => {
-        const app = document.getElementById('app');
-        app.innerHTML = createInvitationHTML();
-        createConfetti();
-    }, 800);
-}
-
-function createInvitationHTML() {
-    return `
-        <div class="invitation-container">
-            <div class="invitation-card">
-                <div class="invitation-content">
-                    <div class="invitation-decoration">🎉✨🎂</div>
-                    
-                    <h1 class="invitation-title">Mời Bạn Dự Tiệc</h1>
-                    <p class="invitation-subtitle">Một ngày đặc biệt của chúng ta</p>
-                    
-                    <div class="invitation-divider"></div>
-                    
-                    <p class="invitation-text">
-                        Cảm ơn bạn đã đồng hành cùng tôi qua những chương của câu chuyện này.<br>
-                        Hôm nay là ngày đặc biệt, và tôi muốn chia sẻ khoảnh khắc này cùng bạn.
-                    </p>
-                    
-                    <div class="invitation-details">
-                        <div class="detail-row">
-                            <span class="detail-icon">📅</span>
-                            <span><strong>Ngày:</strong> 16 tháng 7, 2026</span>
-                        </div>
-                        <div class="detail-row">
-                            <span class="detail-icon">🕐</span>
-                            <span><strong>Giờ:</strong> 00:00 (Nửa đêm)</span>
-                        </div>
-                        <div class="detail-row">
-                            <span class="detail-icon">📍</span>
-                            <span><strong>Địa điểm:</strong> Trong tim của chúng ta</span>
-                        </div>
-                    </div>
-                    
-                    <p class="invitation-text" style="font-style: italic;">
-                        Hãy cùng chúng tôi tưng bừng chào đón một ngày mới,<br>
-                        với những điều kỳ diệu sắp tới.
-                    </p>
-                    
-                    <div class="invitation-rsvp">
-                        <button class="rsvp-btn rsvp-btn-primary" onclick="confirmRsvp()">
-                            Tôi sẽ tham gia 💝
-                        </button>
-                        <button class="rsvp-btn rsvp-btn-secondary" onclick="shareInvitation()">
-                            Chia sẻ 💌
-                        </button>
-                    </div>
-                    
-                    <div class="invitation-decoration-bottom">🎈 🎁 🌟</div>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
+ 
+// Hiệu ứng confetti khi hiển thị thư mời
 function createConfetti() {
-    const colors = ['#ff69b4', '#ff1493', '#ffc0e0', '#ffa3d0', '#ff80ab'];
+    const colors = ['#c41e3a', '#ffd700', '#e91e63', '#ff6b9d', '#ffa500'];
     
     for (let i = 0; i < 50; i++) {
         const confetti = document.createElement('div');
@@ -303,11 +297,13 @@ function createConfetti() {
         setTimeout(() => confetti.remove(), 3500);
     }
 }
-
+ 
+// Xác nhận tham gia
 function confirmRsvp() {
     alert('Cảm ơn bạn! 🎉\n\nChúng ta sẽ gặp nhau vào ngày 16/7/2026!\n\nChúc bạn một ngày tuyệt vời! 💝');
 }
-
+ 
+// Chia sẻ thư mời
 function shareInvitation() {
     const message = 'Bạn được mời dự tiệc sinh nhật đặc biệt! Vào ngày 16/7/2026. Hãy cùng chúng tôi tưng bừng chào đón! 🎉✨';
     
@@ -318,10 +314,31 @@ function shareInvitation() {
             url: window.location.href
         }).catch(err => console.log('Error sharing:', err));
     } else {
+        // Fallback: copy to clipboard	
         navigator.clipboard.writeText(message + '\n' + window.location.href).then(() => {
             alert('Đã copy thư mời vào clipboard! 📋');
         });
     }
 }
-
+ 
+// Khởi động app khi DOM ready
 document.addEventListener('DOMContentLoaded', initApp);
+initParticles();
+ function showPlanetContent(index) {
+    const slide = gallerySlides[index];
+    const app = document.getElementById('app');
+    
+    app.innerHTML = `
+        <div class="planet-detail">
+            <button onclick="backToSolarSystem()" class="back-btn">← Quay lại</button>
+            <img src="${slide.image}" alt="${slide.caption}" class="detail-image">
+            <h2>${slide.caption}</h2>
+            <p>Chương ${index + 1} của hành trình đặc biệt của chúng ta</p>
+        </div>
+    `;
+}
+
+function backToSolarSystem() {
+    const app = document.getElementById('app');
+    app.innerHTML = createGalleryHTML();
+}
