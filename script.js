@@ -104,6 +104,7 @@ function createGalleryHTML() {
             </div>
         </div>
     `;
+	// Auto-play will start in initGallery
 }
 
 // Khởi tạo gallery - SỬA LỖI CLICK
@@ -121,6 +122,9 @@ function initGallery() {
             indicator.addEventListener('click', () => goToSlide(index));
         });
     }, 100);
+	// Auto-play carousel
+    setInterval(nextSlide, 8000);
+	
 }
 
 // Chuyển slide tiếp theo
@@ -229,24 +233,7 @@ function createInvitationHTML() {
         </div>
     `;
 }
- 
-// Khởi tạo gallery
-function initGallery() {
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const indicators = document.querySelectorAll('.indicator');
-    
-    prevBtn.addEventListener('click', previousSlide);
-    nextBtn.addEventListener('click', nextSlide);
-    
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => goToSlide(index));
-    });
-    
-    // Auto-play carousel (tùy chọn)
-    setInterval(nextSlide, 8000); // Tự động chuyển slide sau 8 giây
-}
- 
+
 // Chuyển sang slide tiếp theo
 function nextSlide() {
     if (showingInvitation) {
