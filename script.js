@@ -234,47 +234,7 @@ function createInvitationHTML() {
     `;
 }
 
-// Chuyển sang slide tiếp theo
-function nextSlide() {
-    if (showingInvitation) {
-        currentSlide = 0;
-        showingInvitation = false;
-        const app = document.getElementById('app');
-        app.innerHTML = createGalleryHTML();
-        initGallery();
-        return;
-    }
-    
-    currentSlide = currentSlide + 1;
-    
-    // Nếu vượt quá số lượng slide -> hiển thị thư mời
-    if (currentSlide >= gallerySlides.length) {
-        showInvitation();
-    } else {
-        updateSlide();
-    }
-}
- 
-// Quay lại slide trước
-function previousSlide() {
-    if (showingInvitation) {
-        showingInvitation = false;
-        currentSlide = gallerySlides.length - 1;
-        const app = document.getElementById('app');
-        app.innerHTML = createGalleryHTML();
-        initGallery();
-        return;
-    }
-    
-    currentSlide = currentSlide - 1;
-    
-    if (currentSlide < 0) {
-        currentSlide = gallerySlides.length - 1;
-    }
-    
-    updateSlide();
-}
- 
+
 // Hiển thị thư mời sinh nhật (thiệp đóng trước)
 function showInvitation() {
     showingInvitation = true;
