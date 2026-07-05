@@ -1,5 +1,5 @@
 // Target date: July 16, 2026 at 00:00 (midnight)
-const targetDate = new Date('2026-07-02T00:00:00').getTime();
+const targetDate = new Date('2026-07-03T00:00:00').getTime();
 
 const gallerySlides = [
     { image: 'https://images.unsplash.com/photo-1782612920864-30b1004aadd4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', caption: 'Chương 1: Khởi đầu' },
@@ -26,10 +26,9 @@ function initApp() {
     } else {
         app.innerHTML = createGalleryHTML();
         document.body.classList.add('gallery-mode');
-        initGallery();
+        initPlanetClicks();
     }
 }
- initPlanetClicks();
 // Khởi tạo Particles.js
 function initParticles() {
     particlesJS('particles-js', {
@@ -101,15 +100,26 @@ function updateCountdown() {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    document.getElementById('days').textContent = String(days).padStart(2, '0');
-    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    setTimeValue('days', days);
+    setTimeValue('hours', hours);
+    setTimeValue('minutes', minutes);
+    setTimeValue('seconds', seconds);
 }
 
-// Tạo HTML cho gallery (có nút điều hướng ở dưới)
+// Cập nhật một ô số và tạo hiệu ứng "nhảy" mỗi giây
+function setTimeValue(id, value) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.textContent = String(value).padStart(2, '0');
+
+    // Restart the tick animation on every update
+    el.classList.remove('tick');
+    void el.offsetWidth; // force reflow so the animation can replay
+    el.classList.add('tick');
+}
+
 // Tạo Gallery sau 16/07/2026 - Hệ Mặt Trời 8 hành tinh
-// Tạo Gallery - Hệ Mặt Trời 8 hành tinh
+
 function createGalleryHTML() {
     return `
         <div class="solar-system-container">
@@ -126,8 +136,8 @@ function createGalleryHTML() {
                 <div class="orbit orbit-2"><div class="planet real-planet" data-index="1">🪐</div></div>
                 <div class="orbit orbit-3"><div class="planet real-planet" data-index="2">🌍</div></div>
                 <div class="orbit orbit-4"><div class="planet real-planet" data-index="3">🔴</div></div>
-                <div class="orbit orbit-5"><div class="planet real-planet" data-index="4">🟠</div></div>
-                <div class="orbit orbit-6"><div class="planet real-planet" data-index="5">🟡</div></div>
+                <div class="orbit orbit-5"><div class="planet real-planet" data-index="4">☄️</div></div>
+                <div class="orbit orbit-6"><div class="planet real-planet" data-index="5">🪐</div></div>
                 <div class="orbit orbit-7"><div class="planet real-planet" data-index="6">🔵</div></div>
                 <div class="orbit orbit-8"><div class="planet real-planet" data-index="7">🟣</div></div>
             </div>
@@ -138,11 +148,13 @@ function createGalleryHTML() {
 // Khởi tạo click sau khi render
 function initPlanetClicks() {
     setTimeout(() => {
-        // Start orbit animations
+        // Give each orbit a random starting angle so planets never line up
         document.querySelectorAll('.orbit').forEach(orbit => {
+            const randomAngle = Math.floor(Math.random() * 360);
+            orbit.style.setProperty('--start-angle', randomAngle + 'deg');
             orbit.classList.add('animate');
         });
-        
+
         document.querySelectorAll('.real-planet').forEach(planet => {
             planet.style.cursor = 'pointer';
             planet.addEventListener('click', function(e) {
@@ -151,7 +163,22 @@ function initPlanetClicks() {
                 showPlanetPopup(index);
             });
         });
+
+        // Click the sun to open the birthday invitation
+        const sun = document.querySelector('.sun');
+        if (sun) {
+            sun.addEventListener('click', function(e) {
+                e.stopPropagation();
+                showSunInvitation();
+            });
+        }
     }, 100);
+}
+
+// Đóng popup kèm hiệu ứng
+function closePopup(popup) {
+    popup.classList.add('closing');
+    setTimeout(() => popup.remove(), 220);
 }
 
 function showPlanetPopup(index) {
@@ -173,7 +200,40 @@ function showPlanetPopup(index) {
 
     // Close button
     const closeBtn = popup.querySelector('.close-popup');
-    closeBtn.addEventListener('click', () => popup.remove());
+    closeBtn.addEventListener('click', () => closePopup(popup));
+
+    // Click outside content to close
+    popup.addEventListener('click', (e) => {
+        if (e.target === popup) closePopup(popup);
+    });
+}
+
+// Thiệp mời khi bấm vào mặt trời
+function showSunInvitation() {
+    const popup = document.createElement('div');
+    popup.className = 'planet-popup';
+    popup.innerHTML = `
+        <div class="popup-content invitation-content">
+            <button class="close-popup">✕</button>
+            <div class="invitation-icon">🎂</div>
+            <h2>Thiệp Mời Sinh Nhật</h2>
+            <p class="invitation-subtitle">Bé Chloe tròn tuổi đầu tiên!</p>
+            <div class="invitation-divider">✦ ✦ ✦</div>
+            <p>Trân trọng kính mời bạn đến chung vui trong ngày đặc biệt của bé Chloe</p>
+            <p class="invitation-date">📅 16.07.2026</p>
+            <p class="invitation-note">Sự hiện diện của bạn là món quà quý giá nhất 💛</p>
+        </div>
+    `;
+
+    document.body.appendChild(popup);
+    createConfetti();
+
+    const closeBtn = popup.querySelector('.close-popup');
+    closeBtn.addEventListener('click', () => closePopup(popup));
+
+    popup.addEventListener('click', (e) => {
+        if (e.target === popup) closePopup(popup);
+    });
 }
 
 
@@ -284,17 +344,26 @@ function updateSlide() {
  
 // Hiệu ứng confetti khi hiển thị thư mời
 function createConfetti() {
-    const colors = ['#c41e3a', '#ffd700', '#e91e63', '#ff6b9d', '#ffa500'];
-    
-    for (let i = 0; i < 50; i++) {
+    const colors = ['#c41e3a', '#ffd700', '#e91e63', '#ff6b9d', '#ffa500', '#4fc3f7', '#8bc34a'];
+
+    for (let i = 0; i < 70; i++) {
         const confetti = document.createElement('div');
-        confetti.className = 'confetti';
+        confetti.className = 'confetti' + (Math.random() > 0.5 ? ' circle' : '');
         confetti.style.left = Math.random() * 100 + '%';
         confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.animationDelay = Math.random() * 0.5 + 's';
+        confetti.style.setProperty('--drift', (Math.random() * 220 - 110) + 'px');
+
+        const size = 6 + Math.random() * 7;
+        confetti.style.width = size + 'px';
+        confetti.style.height = (size * 1.4) + 'px';
+
+        const duration = 2.4 + Math.random() * 2.2;
+        confetti.style.animationDuration = duration + 's';
+        confetti.style.animationDelay = Math.random() * 0.4 + 's';
+
         document.body.appendChild(confetti);
-        
-        setTimeout(() => confetti.remove(), 3500);
+
+        setTimeout(() => confetti.remove(), (duration + 0.6) * 1000);
     }
 }
  
