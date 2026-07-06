@@ -11,28 +11,28 @@ const gallerySlides = [
              'Chúc mừng tuổi 19 xinh đẹp của em!'
     },
 
-       {image: 'assets/IMG_6658.jpg',
+       {image: 'assests/IMG_6658.jpg',
     caption: 'Em bé của ngày hôm đó<br><br>'},
 
-       {image: 'assets/IMG_6625.jpg',
+       {image: 'assests/IMG_6625.jpg',
     caption: 'Anh chụp cho em<br><br>'},
 
-        {image: 'assets/IMG_6631.jpg',
+        {image: 'assests/IMG_6631.jpg',
     caption: 'Sinh nhật lần thứ hai ở bên em 🎉<br><br>' +
              'Lần này thì mọi thứ thuận lợi hơn nè,<br>' +
              'Quán đẹp đồ ăn ổn, nhưng quà thì hong được như ý ❤️<br><br>' +
              'Chúc mừng tuổi 18 xinh đẹp của em!'},
 
-    {image: 'assets/IMG_1890.jpg',
+    {image: 'assests/IMG_1890.jpg',
     caption: 'Hong biết đang ước gì<br><br>'}, 
 
-    {image: 'assets/IMG_1885.jpg',
+    {image: 'assests/IMG_1885.jpg',
     caption: 'Bữa cơm đạm bạc<br><br>'},
 
-    {image: 'assets/IMG_1871.jpg',
+    {image: 'assests/IMG_1871.jpg',
     caption: 'Bánh sinh nhật Capyparaaa<br><br>'},
 
-    {image: 'assets/IMG_1876.jpg',
+    {image: 'assests/IMG_1876.jpg',
     caption: 'Sinh nhật đầu tiên anh tổ chức cho em 🎉<br><br>' +
              'Còn nhiều thiếu sót vì mới đi làm về + thời tiết không ủng hộ,<br>' +
              'nhưng thấy em vui với món quà là anh hạnh phúc lắm rồi ❤️<br><br>' +
