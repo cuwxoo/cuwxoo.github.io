@@ -314,8 +314,8 @@ body {
 
 /* ====================== PAGE LOAD ENTRANCE ====================== */
 @keyframes spaceZoomIn {
-    0% { opacity: 0; transform: scale(1.5); filter: blur(6px); }
-    100% { opacity: 1; transform: scale(1); filter: blur(0); }
+    0% { opacity: 0; transform: scale(1.5); }
+    100% { opacity: 1; transform: scale(1); }
 }
 
 @keyframes fadeSlideUp {
