@@ -1,17 +1,43 @@
 // Target date: July 16, 2026 at 00:00 (midnight)
 const targetDate = new Date('2026-07-03T00:00:00').getTime();
 
+// Nội dung mỗi hành tinh. Đổi "image" thành đường dẫn ảnh của bạn (vd: 'assets/images/anh1.jpg'),
+// hoặc thêm "video: 'assets/videos/clip1.mp4'" để hiện video thay vì ảnh.
 const gallerySlides = [
-    { image: 'https://images.unsplash.com/photo-1782612920864-30b1004aadd4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', caption: 'Chương 1: Khởi đầu' },
-    { image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80', caption: 'Chương 2: Hành trình' },
-    { image: 'https://images.unsplash.com/photo-1782763558195-caa1373561c2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', caption: 'Chương 3: Thách thức' },
-    { image: 'https://images.unsplash.com/photo-1783003530150-7afebe59feb5?q=80&w=1175&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', caption: 'Chương 4: Tia sáng hy vọng' },
-    { image: 'https://images.unsplash.com/photo-1781285909142-b335421c2fdb?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', caption: 'Chương 5: Kết thúc vinh quang' },
-    { image: 'https://images.unsplash.com/photo-1782141748753-42e6d6b1abab?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', caption: 'Chương 6: Kết thúc vinh quang' },
-    { image: 'https://images.unsplash.com/photo-1782766330033-67ef615c3741?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', caption: 'Chương 7: Kết thúc vinh quang' },
-    { image: 'https://images.unsplash.com/photo-1782791895550-1522288a20f6?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', caption: 'Chương 8: Kết thúc vinh quang' }
-];
+    {
+    image: 'https://plus.unsplash.com/premium_photo-1680303237111-35809e47fcc1?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    caption: 'Sinh nhật thứ 3 anh tổ chức cho em 🎉<br>' +
+             'Hãy tiếp tục chạm vào mặt trời nhé<br>' +
+             'Chúc mừng tuổi 19 xinh đẹp của em!'
+    },
 
+       {image: 'assets/IMG_6658.jpg',
+    caption: 'Em bé của ngày hôm đó<br><br>'},
+
+       {image: 'assets/IMG_6625.jpg',
+    caption: 'Anh chụp cho em<br><br>'},
+
+        {image: 'assets/IMG_6631.jpg',
+    caption: 'Sinh nhật lần thứ hai ở bên em 🎉<br><br>' +
+             'Lần này thì mọi thứ thuận lợi hơn nè,<br>' +
+             'Quán đẹp đồ ăn ổn, nhưng quà thì hong được như ý ❤️<br><br>' +
+             'Chúc mừng tuổi 18 xinh đẹp của em!'},
+
+    {image: 'assets/IMG_1890.jpg',
+    caption: 'Hong biết đang ước gì<br><br>'}, 
+
+    {image: 'assets/IMG_1885.jpg',
+    caption: 'Bữa cơm đạm bạc<br><br>'},
+
+    {image: 'assets/IMG_1871.jpg',
+    caption: 'Bánh sinh nhật Capyparaaa<br><br>'},
+
+    {image: 'assets/IMG_1876.jpg',
+    caption: 'Sinh nhật đầu tiên anh tổ chức cho em 🎉<br><br>' +
+             'Còn nhiều thiếu sót vì mới đi làm về + thời tiết không ủng hộ,<br>' +
+             'nhưng thấy em vui với món quà là anh hạnh phúc lắm rồi ❤️<br><br>' +
+             'Chúc mừng tuổi 17 xinh đẹp của em!'}
+];
 let currentSlide = 0;
 
 // Khởi tạo
@@ -167,9 +193,10 @@ function createGalleryHTML() {
     return `
         <div class="solar-system-container app-enter">
             <div class="title-section">
-                <h1>Happy Birthday Embe Chloe</h1>
-		<p>Mỗi hành tinh ẩn chứa một điều bí mật nho nhỏ</p>
-                <p>Chạm vào các hành tinh để khám phá</p>
+                <h1>Happy Birthday Embe Chloe🎉</h1>
+		<p>Chúc em tuổi 19 tràn đầy hạnh phúc, ngày càng xinh đẹp rạng rỡ.</p>
+		<p>Năm nay anh chuẩn bị một chút điều đặc biệt dành riêng cho em. ❤️</p>
+                <p>Chạm vào các hành tinh theo thứ tự từ ngoài vào trong để khám phá nhé!</p>
             </div>
             
             <div class="solar-system">
@@ -228,16 +255,20 @@ function closePopup(popup) {
 
 function showPlanetPopup(index) {
     const slide = gallerySlides[index % gallerySlides.length];
-    
+
+    // Nếu slide có "video", hiện video; nếu không thì hiện ảnh như bình thường
+    const mediaHTML = slide.video
+        ? `<video src="${slide.video}" controls playsinline preload="metadata"></video>`
+        : `<img src="${slide.image}" alt="${slide.caption}">`;
+
     const popup = document.createElement('div');
     popup.className = 'planet-popup';
     popup.innerHTML = `
         <div class="popup-content">
             <button class="close-popup">✕</button>
-            <img src="${slide.image}" alt="${slide.caption}">
-            <h2>${slide.title || slide.caption}</h2>
-            <p>${slide.caption}</p>
-            <p>Chương ${index + 1} của hành trình đặc biệt</p>
+            ${mediaHTML}
+            <p>${slide.title || slide.caption}</p>
+           
         </div>
     `;
     
@@ -262,11 +293,11 @@ function showSunInvitation() {
             <button class="close-popup">✕</button>
             <div class="invitation-icon">🎂</div>
             <h2>Thiệp Mời Sinh Nhật</h2>
-            <p class="invitation-subtitle">Bé Chloe tròn tuổi đầu tiên!</p>
+            <p class="invitation-subtitle">Bé Chloe tròn tuổi 19!</p>
             <div class="invitation-divider">✦ ✦ ✦</div>
             <p>Trân trọng kính mời bạn đến chung vui trong ngày đặc biệt của bé Chloe</p>
-            <p class="invitation-date">📅 16.07.2026</p>
-            <p class="invitation-note">Sự hiện diện của bạn là món quà quý giá nhất 💛</p>
+            <p class="invitation-date">📅 16.07.2026 • 18:00</p>
+            <p class="invitation-note">Địa điểm: Lên xe của tui 🚗💨</p>
         </div>
     `;
 
@@ -419,7 +450,7 @@ function confirmRsvp() {
  
 // Chia sẻ thư mời
 function shareInvitation() {
-    const message = 'Bạn được mời dự tiệc sinh nhật đặc biệt! Vào ngày 16/7/2026. Hãy cùng chúng tôi tưng bừng chào đón! 🎉✨';
+    const message = 'Bạn được mời dự tiệc sinh nhật đặc biệt! Vào ngày 16/7/2026. Hãy cùng chúng tôi tưng bừng chào đón! 🎉✨💛';
     
     if (navigator.share) {
         navigator.share({
