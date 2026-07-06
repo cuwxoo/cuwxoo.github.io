@@ -174,7 +174,7 @@ body {
 .orbit-7 .real-planet { margin-top: -225px; }
 .orbit-8 .real-planet { margin-top: -250px; }
 
-/* Mobile: shrink every ring + planet offset to match the smaller .solar-system box */
+/* Mobile: shrink every ring + planet offset to match the smaller .solar-system box test*/
 @media (max-width: 480px) {
     .orbit-1 { width: 90px; height: 90px; }
     .orbit-2 { width: 120px; height: 120px; }
