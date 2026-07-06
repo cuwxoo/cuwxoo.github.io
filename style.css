@@ -157,8 +157,8 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 46px;
-    height: 46px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     cursor: pointer;
@@ -169,6 +169,18 @@ body {
     align-items: center;
     justify-content: center;
     transition: transform 0.25s ease;
+}
+
+/* Shared 3D shading (highlight + shadow rim) layered on top of every planet's own color */
+.real-planet::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 28% 24%, rgba(255,255,255,0.4), transparent 42%),
+        radial-gradient(circle at 72% 78%, rgba(0,0,0,0.4), transparent 62%);
+    pointer-events: none;
 }
 
 .orbit-1 .real-planet { margin-top: -75px; }
@@ -192,9 +204,8 @@ body {
     .orbit-8 { width: 300px; height: 300px; }
 
     .real-planet {
-        width: 30px;
-        height: 30px;
-        font-size: 18px;
+        width: 20px;
+        height: 20px;
     }
 
     .orbit-1 .real-planet { margin-top: -45px; }
@@ -218,9 +229,8 @@ body {
     .orbit-8 { width: 260px; height: 260px; }
 
     .real-planet {
-        width: 26px;
-        height: 26px;
-        font-size: 15px;
+        width: 17px;
+        height: 17px;
     }
 
     .orbit-1 .real-planet { margin-top: -39px; }
@@ -234,33 +244,40 @@ body {
 }
 
 .real-planet:hover {
-    transform: translate(-50%, -50%) scale(1.35);
+    transform: translate(-50%, -50%) scale(1.5);
 }
 
 /* ====================== PLANET ICONS ====================== */
 .planet-mercury {
-    background: radial-gradient(circle at 32% 28%, #d9d2c8, #a89e91 55%, #6b6255 100%);
+    background:
+        radial-gradient(circle at 22% 68%, rgba(0,0,0,0.25) 0 16%, transparent 18%),
+        radial-gradient(circle at 62% 32%, rgba(0,0,0,0.2) 0 12%, transparent 14%),
+        radial-gradient(circle at 32% 28%, #d9d2c8, #a89e91 55%, #6b6255 100%);
 }
 
 .planet-venus {
-    background: radial-gradient(circle at 32% 28%, #ffe9b3, #e0b56f 55%, #a97d3f 100%);
+    background:
+        repeating-linear-gradient(200deg, rgba(255,255,255,0.1) 0px 3px, transparent 3px 8px),
+        radial-gradient(circle at 32% 28%, #ffe9b3, #e0b56f 55%, #a97d3f 100%);
 }
 
 .planet-earth {
     background:
-        radial-gradient(circle at 60% 65%, rgba(70,150,80,0.85) 0 12%, transparent 13%),
-        radial-gradient(circle at 30% 40%, rgba(70,150,80,0.7) 0 15%, transparent 16%),
+        radial-gradient(ellipse 60% 42% at 32% 62%, rgba(70,150,80,0.92) 0%, rgba(70,150,80,0.92) 58%, transparent 62%),
+        radial-gradient(ellipse 34% 24% at 72% 28%, rgba(70,150,80,0.85) 0%, rgba(70,150,80,0.85) 55%, transparent 60%),
         radial-gradient(circle at 32% 28%, #8fd3ff, #2f7fc4 55%, #163e6e 100%);
 }
 
 .planet-mars {
-    background: radial-gradient(circle at 32% 28%, #f0977a, #c1502b 55%, #7a2f14 100%);
+    background:
+        radial-gradient(circle at 50% 10%, rgba(255,255,255,0.75) 0 14%, transparent 16%),
+        radial-gradient(circle at 32% 28%, #f0977a, #c1502b 55%, #7a2f14 100%);
 }
 
 .planet-jupiter {
     background:
-        radial-gradient(circle at 32% 28%, rgba(255,255,255,0.35), transparent 45%),
-        repeating-linear-gradient(4deg, #d7a06a 0px, #d7a06a 4px, #b97a45 4px, #b97a45 7px, #e8c090 7px, #e8c090 10px);
+        radial-gradient(ellipse 22% 14% at 30% 66%, rgba(170,80,45,0.55), transparent 70%),
+        repeating-linear-gradient(180deg, #e8c090 0 12%, #d7a06a 12% 24%, #c48752 24% 32%, #e8c090 32% 44%);
 }
 
 .planet-saturn {
@@ -273,12 +290,12 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 170%;
-    height: 34%;
-    border: 2px solid rgba(230, 210, 160, 0.85);
+    width: 150%;
+    height: 28%;
+    border: 1.5px solid rgba(230, 210, 160, 0.85);
     border-radius: 50%;
-    transform: translate(-50%, -50%) rotate(-18deg);
-    box-shadow: 0 0 4px rgba(255, 235, 180, 0.35);
+    transform: translate(-50%, -50%) rotate(-15deg);
+    box-shadow: 0 0 3px rgba(255, 235, 180, 0.35);
     pointer-events: none;
 }
 
@@ -287,7 +304,9 @@ body {
 }
 
 .planet-neptune {
-    background: radial-gradient(circle at 32% 28%, #8fa4ff, #3f5ad1 55%, #1c2d7a 100%);
+    background:
+        radial-gradient(circle at 68% 62%, rgba(255,255,255,0.18) 0 18%, transparent 20%),
+        radial-gradient(circle at 32% 28%, #8fa4ff, #3f5ad1 55%, #1c2d7a 100%);
 }
 
 /* ====================== SHOOTING STARS ====================== */
