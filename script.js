@@ -28,7 +28,50 @@ function initApp() {
         document.body.classList.add('gallery-mode');
         initPlanetClicks();
     }
+
+    startShootingStars();
 }
+// ====== SAO BĂNG ======
+function createShootingStar() {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'shooting-star-wrapper';
+
+    const startTop = Math.random() * 55;           // xuất hiện ở nửa trên màn hình
+    const startLeft = 15 + Math.random() * 75;      // tránh sát mép trái/phải
+    const angle = 155 + Math.random() * 40;         // hướng bay chéo xuống
+    const distance = 220 + Math.random() * 220;
+    const duration = 0.9 + Math.random() * 0.9;
+
+    wrapper.style.top = startTop + 'vh';
+    wrapper.style.left = startLeft + 'vw';
+    wrapper.style.transform = `rotate(${angle}deg)`;
+
+    const star = document.createElement('div');
+    star.className = 'shooting-star';
+    star.style.animationDuration = duration + 's';
+    star.style.setProperty('--distance', distance + 'px');
+
+    wrapper.appendChild(star);
+    document.body.appendChild(wrapper);
+
+    setTimeout(() => wrapper.remove(), duration * 1000 + 150);
+}
+
+function startShootingStars() {
+    function loop() {
+        createShootingStar();
+        // thỉnh thoảng bắn 2 sao gần nhau cho tự nhiên
+        if (Math.random() < 0.25) {
+            setTimeout(createShootingStar, 200 + Math.random() * 300);
+        }
+        const nextIn = 2200 + Math.random() * 4500;
+        setTimeout(loop, nextIn);
+    }
+    // lần đầu bắn sớm để người dùng thấy ngay
+    setTimeout(createShootingStar, 700);
+    loop();
+}
+
 // Khởi tạo Particles.js
 function initParticles() {
     particlesJS('particles-js', {
@@ -63,7 +106,7 @@ function initParticles() {
 // Countdown
 function createCountdownHTML() {
     return `
-        <div class="countdown-container">
+        <div class="countdown-container app-enter">
        
             <div class="countdown-content">
                 <h1>MISSION LAUNCHING ON</h1>
@@ -122,7 +165,7 @@ function setTimeValue(id, value) {
 
 function createGalleryHTML() {
     return `
-        <div class="solar-system-container">
+        <div class="solar-system-container app-enter">
             <div class="title-section">
                 <h1>Happy Birthday Embe Chloe</h1>
 		<p>Mỗi hành tinh ẩn chứa một điều bí mật nho nhỏ</p>
@@ -132,14 +175,14 @@ function createGalleryHTML() {
             <div class="solar-system">
                 <div class="sun"></div>
                 
-                <div class="orbit orbit-1"><div class="planet real-planet" data-index="0">🌑</div></div>
-                <div class="orbit orbit-2"><div class="planet real-planet" data-index="1">🪐</div></div>
-                <div class="orbit orbit-3"><div class="planet real-planet" data-index="2">🌍</div></div>
-                <div class="orbit orbit-4"><div class="planet real-planet" data-index="3">🔴</div></div>
-                <div class="orbit orbit-5"><div class="planet real-planet" data-index="4">☄️</div></div>
-                <div class="orbit orbit-6"><div class="planet real-planet" data-index="5">🪐</div></div>
-                <div class="orbit orbit-7"><div class="planet real-planet" data-index="6">🔵</div></div>
-                <div class="orbit orbit-8"><div class="planet real-planet" data-index="7">🟣</div></div>
+                <div class="orbit orbit-1"><div class="planet real-planet planet-mercury" data-index="0"></div></div>
+                <div class="orbit orbit-2"><div class="planet real-planet planet-venus" data-index="1"></div></div>
+                <div class="orbit orbit-3"><div class="planet real-planet planet-earth" data-index="2"></div></div>
+                <div class="orbit orbit-4"><div class="planet real-planet planet-mars" data-index="3"></div></div>
+                <div class="orbit orbit-5"><div class="planet real-planet planet-jupiter" data-index="4"></div></div>
+                <div class="orbit orbit-6"><div class="planet real-planet planet-saturn" data-index="5"></div></div>
+                <div class="orbit orbit-7"><div class="planet real-planet planet-uranus" data-index="6"></div></div>
+                <div class="orbit orbit-8"><div class="planet real-planet planet-neptune" data-index="7"></div></div>
             </div>
         </div>
     `;
