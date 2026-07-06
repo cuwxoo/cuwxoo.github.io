@@ -11,13 +11,13 @@ const gallerySlides = [
              'Chúc mừng tuổi 19 xinh đẹp của em!'
     },
 
-       {image: 'IMG_6658.jpg',
+       {image: 'IMG_6658.JPG',
     caption: 'Em bé của ngày hôm đó<br><br>'},
 
        {image: 'IMG_6625.jpg',
     caption: 'Anh chụp cho em<br><br>'},
 
-        {image: 'IMG_6631.jpg',
+        {image: 'IMG_6631.JPG',
     caption: 'Sinh nhật lần thứ hai ở bên em 🎉<br><br>' +
              'Lần này thì mọi thứ thuận lợi hơn nè,<br>' +
              'Quán đẹp đồ ăn ổn, nhưng quà thì hong được như ý ❤️<br><br>' +
