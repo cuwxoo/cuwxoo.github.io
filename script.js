@@ -1,5 +1,5 @@
 // Target date: July 16, 2026 at 00:00 (midnight)
-const targetDate = new Date('2026-07-03T00:00:00').getTime();
+const targetDate = new Date('2026-07-16T00:00:00').getTime();
 
 // Nội dung mỗi hành tinh. Đổi "image" thành đường dẫn ảnh của bạn (vd: 'assets/images/anh1.jpg'),
 // hoặc thêm "video: 'assets/videos/clip1.mp4'" để hiện video thay vì ảnh.
