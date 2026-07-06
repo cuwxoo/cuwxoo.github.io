@@ -1,5 +1,5 @@
 // Target date: July 16, 2026 at 00:00 (midnight)
-const targetDate = new Date('2026-07-05T00:00:00').getTime();
+const targetDate = new Date('2026-07-03T00:00:00').getTime();
 
 const gallerySlides = [
     { image: 'https://images.unsplash.com/photo-1782612920864-30b1004aadd4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', caption: 'Chương 1: Khởi đầu' },
