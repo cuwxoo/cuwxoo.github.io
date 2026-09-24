@@ -20,10 +20,8 @@
     --flip-duration: 0.68s;
     --flip-ease: cubic-bezier(0.4, 0.0, 0.2, 1);
   }
-
   *{ box-sizing: border-box; }
   html{ -webkit-tap-highlight-color: transparent; }
-
   body{
     margin:0;
     min-height:100svh;
@@ -38,7 +36,6 @@
     overflow:hidden;
     gap: 0;
   }
-
   .wrap{
     display:flex;
     flex-direction: column;
@@ -46,7 +43,6 @@
     width: min(92vw, 400px);
     gap: 1rem;
   }
-
   .stage{
     perspective: 1800px;
     width: 100%;
@@ -54,14 +50,12 @@
     position: relative;
     touch-action: pan-y;
   }
-
   .book{
     position: relative;
     width:100%;
     height:100%;
     transform-style: preserve-3d;
   }
-
   .page{
     position:absolute;
     inset:0;
@@ -82,12 +76,7 @@
     flex-direction: column;
     overflow: hidden;
   }
-
-  .page.flipped{
-    transform: rotateY(-178deg);
-  }
-
-  /* lớp bóng mờ chạy qua khi lật trang — tạo chiều sâu, mượt hơn */
+  .page.flipped{ transform: rotateY(-178deg); }
   .page::before{
     content:'';
     position:absolute; inset:0;
@@ -105,29 +94,23 @@
     45%{ opacity:1; }
     100%{ opacity:0; }
   }
-
   .corner{ position:absolute; width: 26px; height:26px; opacity:0.9; }
   .corner.tl{ top:10px; left:10px; }
   .corner.tr{ top:10px; right:10px; transform: scaleX(-1); }
   .corner.bl{ bottom:10px; left:10px; transform: scaleY(-1); }
   .corner.br{ bottom:10px; right:10px; transform: scale(-1,-1); }
-
   .page-number{
     position:absolute; bottom: 0.6rem; right: 1.1rem;
     font-size: 0.85rem; font-style: italic; color: var(--ink-soft);
   }
-
   .floral-strip{ width: 100%; display:block; flex-shrink:0; }
   .floral-strip.top{ height: 54px; margin-bottom: 0.15rem; }
   .floral-strip.bottom{ height: 54px; margin-top: auto; }
-
   .content-inner{
     flex:1; display:flex; flex-direction:column;
     align-items:center; text-align:center; justify-content:center; min-height:0;
   }
   .content-inner.no-center{ justify-content:flex-start; }
-
-  /* ---------- COVER ---------- */
   .page.cover .content-inner{ gap: 0.15rem; }
   .kicker{
     font-family: 'Playfair Display', serif;
@@ -138,7 +121,6 @@
     font-family: 'Dancing Script', cursive; font-weight: 700;
     font-size: 2.6rem; color: var(--ink); line-height: 1; margin: 0.1rem 0;
   }
-
   .clock-wrap{ position: relative; width: 126px; height: 126px; margin: 0.45rem auto 0.25rem; }
   .clock-wrap svg.ring{ width:100%; height:100%; transform: rotate(-90deg); }
   .clock-wrap .track{ fill:none; stroke: rgba(201,168,118,0.25); stroke-width: 2; }
@@ -155,14 +137,11 @@
     font-family: 'Playfair Display', serif; font-size: 0.75rem;
     letter-spacing:0.14em; text-transform:uppercase; color: var(--ink-soft); margin-top:0.22rem;
   }
-
   .cover-names{ font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--ink-soft); margin-top: 0.15rem; }
   .tap-hint{
     font-family: 'Playfair Display', serif; margin-top: 0.9rem; font-size: 0.82rem;
     letter-spacing: 0.05em; color: var(--rose); font-style: italic;
   }
-
-  /* ---------- CONTENT PAGES ---------- */
   .date-label{
     font-family: 'Playfair Display', serif; font-size: 0.8rem; letter-spacing: 0.16em;
     text-transform: uppercase; color: var(--rose); margin-bottom: 0.28rem;
@@ -175,7 +154,6 @@
     font-family: 'Playfair Display', serif; font-size: 0.98rem; line-height: 1.48;
     color: var(--ink-soft); margin: 0 0 0.6rem;
   }
-
   .photo-slot{
     position: relative;
     margin: 0.2rem auto 0.45rem;
@@ -186,24 +164,23 @@
     border: 1px solid var(--blush);
     border-radius: 10px;
     display:flex; align-items:center; justify-content:center;
-    color: var(--ink-soft); font-size: 0.7rem; text-align:center;
-    font-family: 'Playfair Display', serif;
     overflow: hidden;
     flex-shrink: 1;
     min-height: 0;
   }
-
   .handwritten-note{
     font-family: 'Dancing Script', cursive; font-weight: 600; font-size: 1.3rem;
     color: var(--sage); margin-top: auto;
   }
-
-  /* ---------- GALLERY (trang nhiều ảnh) ---------- */
   .gallery-grid{
     display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 56px;
-    gap: 6px;
+    grid-template-columns: 1.25fr 1fr 1fr;
+    grid-template-rows: minmax(0, 1.15fr) minmax(0, 1.15fr) minmax(0, 1fr);
+    grid-template-areas:
+      "selfie selfie arch"
+      "selfie selfie street"
+      "flag flowers street";
+    gap: 7px;
     width: 100%;
     flex: 1;
     min-height: 0;
@@ -212,16 +189,25 @@
     background: var(--cream);
     border: 1px solid var(--blush);
     border-radius: 8px;
-    display:flex; align-items:center; justify-content:center;
-    font-size: 0.58rem; color: var(--ink-soft); font-family:'Playfair Display', serif;
-    text-align:center; padding: 0;
     overflow:hidden;
     min-height: 0;
+    min-width: 0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
   }
-  .g-wide{ grid-column: span 2; grid-row: span 2; }
-  .g-tall{ grid-row: span 2; }
-
-  /* ---------- CHECKLIST (những điều nhỏ / lời hứa) ---------- */
+  .g-selfie{ grid-area: selfie; }
+  .g-arch{ grid-area: arch; }
+  .g-street{ grid-area: street; }
+  .g-flag{ grid-area: flag; }
+  .g-flowers{ grid-area: flowers; }
+  .g-photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+  }
   .love-list{
     display:flex; flex-direction:column; gap: 0.4rem; text-align:left; width:100%;
     overflow-y:auto; font-family: 'Playfair Display', serif;
@@ -230,8 +216,6 @@
     display:flex; align-items:flex-start; gap: 0.5rem; font-size: 0.9rem; color: var(--ink-soft);
   }
   .love-list .item::before{ content:'❀'; color: var(--rose); font-size: 0.78rem; margin-top:0.14rem; }
-
-  /* ---------- NUMBERS ---------- */
   .numbers-list{ display:flex; flex-direction:column; gap: 0.5rem; width:100%; }
   .numbers-list .row{
     display:flex; justify-content:center; align-items:baseline; gap: 0.6rem;
@@ -239,22 +223,16 @@
   }
   .numbers-list .val{ font-family:'Dancing Script', cursive; font-weight:700; font-size: 1.5rem; color: var(--rose); }
   .numbers-list .lbl{ font-family: 'Playfair Display', serif; font-size: 0.88rem; color: var(--ink-soft); }
-
-  /* ---------- LETTER ---------- */
   .page.letter p{ font-style: italic; font-size: 1rem; color: var(--ink); }
   .page.letter .signature{
     font-family:'Dancing Script', cursive; font-weight:700; font-size: 1.55rem; color: var(--rose); margin-top: 0.75rem;
   }
-
-  /* ---------- FINALE / VIDEO ---------- */
   .video-frame{
     width: 100%; border: 1px solid var(--gold); border-radius: 10px;
     overflow:hidden; background:#000; margin: 0.45rem 0 0.65rem;
   }
   .video-frame video{ width:100%; display:block; }
   .closing{ font-family:'Dancing Script', cursive; font-weight:600; font-size: 1.35rem; color: var(--rose); }
-
-  /* Ảnh mọi kích thước: co vừa khung, không tràn trang */
   .page img{
     max-width: 100%;
     max-height: min(38vh, 230px);
@@ -265,46 +243,27 @@
     margin: 0 auto;
     border-radius: inherit;
   }
-  .photo-slot img,
-  .g-photo img{
+  .photo-slot img{
     width: 100%;
     height: 100%;
-    max-width: 100%;
-    max-height: 100%;
     object-fit: contain;
     object-position: center;
     display: block;
     border-radius: inherit;
   }
-  .g-photo img{ object-fit: cover; }
-
-  /* ---------- CONTROLS ---------- */
   .controls{
-    position: relative;
-    left: auto;
-    bottom: auto;
-    transform: none;
     display:flex; align-items:center; gap: 1.2rem;
     color: var(--ink-soft); font-family:'Playfair Display', serif; font-size: 0.95rem;
     z-index: 200;
-    pointer-events: auto;
     user-select: none;
-    -webkit-user-select: none;
   }
   .controls button{
     background: var(--paper); border: 1px solid var(--rose); color: var(--rose);
     border-radius: 50%; width: 44px; height:44px; font-size: 1.15rem; cursor:pointer;
-    pointer-events: auto;
-    touch-action: manipulation;
-    position: relative;
-    z-index: 201;
-    -webkit-tap-highlight-color: transparent;
   }
   .controls button:disabled{ opacity:0.3; cursor:default; }
-
   .tap-zone{ position:absolute; top:0; bottom:0; width: 28%; z-index: 50; cursor:pointer; }
   .tap-zone.left{ left:0; } .tap-zone.right{ right:0; }
-
   @media (prefers-reduced-motion: reduce){
     .page{ transition: none; }
     .page.turning::before{ animation: none; }
@@ -312,7 +271,6 @@
 </style>
 </head>
 <body>
-
 <svg width="0" height="0" style="position:absolute">
   <defs>
     <symbol id="sprig" viewBox="0 0 60 60">
@@ -332,13 +290,10 @@
     </symbol>
   </defs>
 </svg>
-
 <div class="wrap">
 <div class="stage" id="stage">
   <div class="book" id="book">
-
-    <!-- Trang bìa -->
-    <div class="page cover" style="z-index:14;">
+    <div class="page cover" style="z-index:15;">
       <svg class="floral-strip top" viewBox="0 0 380 58" preserveAspectRatio="xMidYMid meet">
         <use href="#sprig" x="0" y="-6" width="70" height="70"/>
         <use href="#sprig" x="55" y="-16" width="46" height="46" transform="rotate(12 90 10)"/>
@@ -347,7 +302,7 @@
       </svg>
       <div class="content-inner">
         <div class="kicker">một cuốn sổ nhỏ về</div>
-        <div class="script-title">1000 Ngày</div>
+  
         <div class="clock-wrap">
           <svg class="ring" viewBox="0 0 126 126">
             <circle class="track" cx="63" cy="63" r="61" />
@@ -367,9 +322,7 @@
         <use href="#sprig" x="300" y="-10" width="66" height="66" transform="rotate(10 330 20)"/>
       </svg>
     </div>
-
-    <!-- 1: lời mở đầu -->
-    <div class="page" style="z-index:13;">
+    <div class="page" style="z-index:14;">
       <svg class="corner tl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
       <svg class="corner tr" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
       <svg class="corner bl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
@@ -382,9 +335,7 @@
       </div>
       <div class="page-number">1</div>
     </div>
-
-    <!-- 2 -->
-    <div class="page" style="z-index:12;">
+    <div class="page" style="z-index:13;">
       <svg class="corner tl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
       <svg class="corner tr" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
       <svg class="corner bl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
@@ -393,13 +344,11 @@
         <div class="date-label">Ngày -79 · 14.10.2023</div>
         <h2>First Date</h2>
         <div class="photo-slot"><img src="images/IMG_1547.jpg" alt=""></div>
-        <p>Lần đầu hẹn em bé đi ăn lẩu neo, kk không có hình chụp lại	.</p>
+        <p>Lần đầu hẹn em bé đi ăn lẩu neo, kk không có hình chụp lại.</p>
       </div>
       <div class="page-number">2</div>
     </div>
-
-    <!-- 3 -->
-    <div class="page" style="z-index:11;">
+    <div class="page" style="z-index:12;">
       <svg class="corner tl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
       <svg class="corner tr" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
       <svg class="corner bl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
@@ -412,9 +361,7 @@
       </div>
       <div class="page-number">3</div>
     </div>
-
-    <!-- 4: chuyến đi -->
-    <div class="page" style="z-index:10;">
+    <div class="page" style="z-index:11;">
       <svg class="corner tl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
       <svg class="corner tr" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
       <svg class="corner bl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
@@ -423,93 +370,58 @@
         <div class="date-label">Ngày 19 · 19.01.2024</div>
         <h2>Chuyến đi đầu tiên</h2>
         <div class="photo-slot"><img src="images/IMG_1839.JPG" alt=""></div>
-        <p></p>
       </div>
       <div class="page-number">4</div>
     </div>
-
-    <!-- 5: BỘ SƯU TẬP ẢNH (nhiều hình) -->
-    <div class="page" style="z-index:9;">
+    <div class="page" style="z-index:10;">
       <svg class="corner tl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
       <svg class="corner tr" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
       <svg class="corner bl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
       <svg class="corner br" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
       <div class="content-inner no-center">
         <div class="date-label">bộ sưu tập</div>
-        <h2>Vài khoảnh khắc khác</h2>
+        <h2>Vài khoảnh khắc khắc đi chơi</h2>
         <div class="gallery-grid">
-          <div class="g-photo g-wide"><img src="images/IMG_0709.JPG" alt=""></div>
-          <div class="g-photo"><img src="images/IMG_9245.JPG" alt=""></div>
-          <div class="g-photo g-tall"><img src="images/IMG_5478.JPG" alt=""></div>
-          <div class="g-photo"><img src="images/IMG_7410.JPG" alt=""></div>
-          <div class="g-photo"><img src="images/IMG_1058.jpg" alt=""></div>
-          <div class="g-photo"><img src="images/IMG_0512.JPG" alt=""></div>
-          <div class="g-photo g-wide"><video width="640" height="360" controls>
-  <source src="images/IMG_1573.jpg" type="video/mp4">
-  Trình duyệt của bạn không hỗ trợ thẻ video.
-</video></div>
+          <div class="g-photo g-selfie"><img src="images/IMG_0709.JPG" alt=""></div>
+          <div class="g-photo g-arch"><img src="images/IMG_9245.JPG" alt=""></div>
+          <div class="g-photo g-street"><img src="images/IMG_5478.JPG" alt=""></div>
+          <div class="g-photo g-flag"><img src="images/IMG_0512.JPG" alt=""></div>
+          <div class="g-photo g-flowers"><img src="images/IMG_1058.jpg" alt=""></div>
         </div>
       </div>
       <div class="page-number">5</div>
     </div>
-
-    <!-- 6: thử thách -->
+    <div class="page" style="z-index:9;">
+      <svg class="corner tl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
+      <svg class="corner tr" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
+      <svg class="corner bl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
+      <svg class="corner br" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
+      <div class="content-inner">
+        <div class="date-label">Ngày 734 · 04.01.2026</div>
+        <h2>Vượt qua thử thách</h2>
+        <div class="photo-slot"><img src="images/IMG_8800.jpg" alt=""></div>
+        <p>Một trong những điều khó khăn nhất đó là việc học đạo.</p>
+        <div class="handwritten-note">nhưng vẫn nắm tay nhau qua hết</div>
+      </div>
+      <div class="page-number">6</div>
+    </div>
     <div class="page" style="z-index:8;">
       <svg class="corner tl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
       <svg class="corner tr" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
       <svg class="corner bl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
       <svg class="corner br" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
       <div class="content-inner">
-        <div class="date-label">Ngày 400 · 05.02.2024</div>
-        <h2>Vượt qua thử thách</h2>
-        <div class="photo-slot">[ dán ảnh vào đây ]</div>
-        <p>Một giai đoạn khó khăn đã cùng nhau vượt qua, và điều đã học được từ đó.</p>
-        <div class="handwritten-note">vẫn nắm tay nhau qua hết</div>
-      </div>
-      <div class="page-number">6</div>
-    </div>
-
-    <!-- 7: những điều nhỏ -->
-    <div class="page" style="z-index:7;">
-      <svg class="corner tl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
-      <svg class="corner tr" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
-      <svg class="corner bl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
-      <svg class="corner br" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
-      <div class="content-inner">
         <div class="date-label">những điều nhỏ</div>
-        <h2>Những điều em/anh yêu</h2>
+        <h2>Những điều anh yêu</h2>
         <div class="love-list">
-          <div class="item">Cách em/anh cười khi nghe một câu chuyện chẳng buồn cười lắm</div>
-          <div class="item">Luôn nhớ những chi tiết nhỏ mà anh/em từng nói qua</div>
-          <div class="item">Kiên nhẫn mỗi khi anh/em vô lý</div>
-          <div class="item">Cách nắm tay thật chặt khi qua đường</div>
-          <div class="item">[ thêm điều bạn muốn ]</div>
+          <div class="item">Luôn cố gắng vì nhau</div>
+          <div class="item">Lạc quan yêu đời</div>
+          <div class="item">Một người tự lập, kiên cường</div>
         </div>
       </div>
       <div class="page-number">7</div>
     </div>
-
-    <!-- 8: lời hứa -->
-    <div class="page" style="z-index:6;">
-      <svg class="corner tl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
-      <svg class="corner tr" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
-      <svg class="corner bl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
-      <svg class="corner br" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
-      <div class="content-inner">
-        <div class="date-label">cho 1000 ngày tiếp theo</div>
-        <h2>Lời hứa nhỏ</h2>
-        <div class="love-list">
-          <div class="item">Vẫn sẽ nắm tay nhau qua những ngày mệt mỏi nhất</div>
-          <div class="item">Lắng nghe nhiều hơn, cãi nhau ít lại</div>
-          <div class="item">Cùng nhau đi thêm nhiều nơi mới</div>
-          <div class="item">[ thêm lời hứa của bạn ]</div>
-        </div>
-      </div>
-      <div class="page-number">8</div>
-    </div>
-
-    <!-- 9: con số -->
-    <div class="page" style="z-index:5;">
+    <div class="page" style="z-index:7;">
       <svg class="corner tl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
       <svg class="corner tr" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
       <svg class="corner bl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
@@ -518,40 +430,70 @@
         <div class="date-label">tổng kết nhỏ</div>
         <h2>1000 ngày ấy, có...</h2>
         <div class="numbers-list">
-          <div class="row"><span class="val">142</span><span class="lbl">lần đi ăn ngoài</span></div>
-          <div class="row"><span class="val">6</span><span class="lbl">chuyến đi xa</span></div>
-          <div class="row"><span class="val">23</span><span class="lbl">lần giận dỗi rồi làm hoà</span></div>
+          <div class="row"><span class="val">6</span><span class="lbl">lần ăn sinh nhật cùng nhau</span></div>
+          <div class="row"><span class="val">12</span><span class="lbl">chuyến đi xa</span></div>
+          <div class="row"><span class="val">3</span><span class="lbl">lần xem pháo hoa</span></div>
           <div class="row"><span class="val">∞</span><span class="lbl">lần muốn ôm một cái</span></div>
         </div>
+      </div>
+      <div class="page-number">8</div>
+    </div>
+ <div class="page" style="z-index:9;">
+      <svg class="corner tl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
+      <svg class="corner tr" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
+      <svg class="corner bl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
+      <svg class="corner br" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
+      <div class="content-inner">
+        <div class="date-label">Ngày 845 · 25.04.2026</div>
+        <h2>Cầu hôn</h2>
+        <div class="photo-slot"><img src="images/IMG_0192.jpg" alt=""></div>
+        <p>Một trong những ngày hạnh phúc nhất.</p>
+        <div class="handwritten-note">kk giờ vẫn còn phê</div>
       </div>
       <div class="page-number">9</div>
     </div>
 
-    <!-- 10: lời nhắn -->
-    <div class="page letter" style="z-index:4;">
+    <div class="page" style="z-index:10;">
+      <svg class="corner tl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
+      <svg class="corner tr" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
+      <svg class="corner bl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
+      <svg class="corner br" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
+      <div class="content-inner no-center">
+        <div class="date-label">bộ sưu tập</div>
+        <h2>Vài món quà đã tặng</h2>
+        <div class="gallery-grid">
+          <div class="g-photo g-selfie"><img src="images/IMG_3821.JPG" alt=""></div>
+          <div class="g-photo g-arch"><img src="images/IMG_2893.JPG" alt=""></div>
+          <div class="g-photo g-street"><img src="images/IMG_3819.JPG" alt=""></div>
+          <div class="g-photo g-flag"><img src="images/IMG_1027.JPG" alt=""></div>
+          <div class="g-photo g-flowers"><img src="images/IMG_1022.png" alt=""></div>
+        </div>
+      </div>
+      <div class="page-number">10</div>
+    </div>
+
+
+    <div class="page letter" style="z-index:3;">
       <svg class="corner tl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
       <svg class="corner tr" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
       <svg class="corner bl" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
       <svg class="corner br" viewBox="0 0 24 24"><use href="#corner-flower"/></svg>
       <div class="content-inner">
         <div class="date-label">lời nhắn</div>
-        <h2>Gửi em/anh,</h2>
-        <p>"Viết vào đây một đoạn tâm sự thật — điều bạn muốn nói với người ấy sau 1000 ngày. Không cần hoa mỹ, chỉ cần thật."</p>
-        <div class="signature">— [Tên bạn]</div>
+        <h2>Gửi em,</h2>
+        <p>Một nghìn ngày không phải là đích đến — chỉ là một cột mốc để anh dừng lại, nhìn em, và nói cảm ơn vì đã ở lại.</p>
+        <div class="signature">— An Cư</div>
       </div>
-      <div class="page-number">10</div>
+      <div class="page-number">12</div>
     </div>
-
-    <!-- 11: video -->
-    <div class="page finale" style="z-index:3;">
+    <div class="page finale" style="z-index:2;">
       <svg class="floral-strip top" viewBox="0 0 380 58" preserveAspectRatio="xMidYMid meet">
         <use href="#sprig" x="20" y="-10" width="56" height="56"/>
         <use href="#sprig" x="290" y="-10" width="56" height="56" transform="rotate(-10 320 20)"/>
       </svg>
       <div class="content-inner">
-        <h2>Một điều nhỏ dành riêng cho em/anh</h2>
+        <h2>Một điều nhỏ dành riêng cho em</h2>
         <div class="video-frame">
-          <!-- Đặt file video cạnh HTML rồi đổi src, ví dụ: images/clip.mp4 -->
           <video controls preload="none" playsinline>
             Trình duyệt của bạn không hỗ trợ video.
           </video>
@@ -563,27 +505,22 @@
         <use href="#sprig" x="250" y="-14" width="50" height="50" transform="rotate(8 275 20)"/>
       </svg>
     </div>
-
   </div>
-
   <div class="tap-zone left" id="prevZone"></div>
   <div class="tap-zone right" id="nextZone"></div>
 </div>
-
   <div class="controls" id="controls">
     <button type="button" id="prevBtn" aria-label="Trang trước">‹</button>
     <span id="pageIndicator">bìa</span>
     <button type="button" id="nextBtn" aria-label="Trang sau">›</button>
   </div>
 </div>
-
 <script>
   const pages = Array.from(document.querySelectorAll('.page'));
   const total = pages.length;
   let current = 0;
   let isAnimating = false;
-  const FLIP_MS = 700; // khớp --flip-duration (+ đệm)
-
+  const FLIP_MS = 700;
   function render(){
     pages.forEach((p, i) => {
       if(i < current){
@@ -599,7 +536,6 @@
     document.getElementById('pageIndicator').textContent =
       current === 0 ? 'bìa' : `${current} / ${total - 1}`;
   }
-
   function markTurning(pageEl){
     isAnimating = true;
     pageEl.classList.add('turning');
@@ -608,8 +544,6 @@
       isAnimating = false;
     }, FLIP_MS);
   }
-
-  // Khoá trong lúc đang lật để tránh bấm liên tục làm rối z-index
   function next(){
     if(isAnimating || current >= total - 1) return;
     const p = pages[current];
@@ -623,36 +557,28 @@
     render();
     markTurning(pages[current]);
   }
-
   document.getElementById('nextBtn').addEventListener('pointerdown', onNavPointerDown);
   document.getElementById('prevBtn').addEventListener('pointerdown', onNavPointerDown);
   document.getElementById('nextBtn').addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); next(); });
   document.getElementById('prevBtn').addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); prev(); });
   document.getElementById('nextZone').addEventListener('click', next);
   document.getElementById('prevZone').addEventListener('click', prev);
-
   function onNavPointerDown(e){
     e.stopPropagation();
     e.stopImmediatePropagation();
   }
-
-  // Điều hướng bằng bàn phím (desktop)
   document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') next();
     if (e.key === 'ArrowLeft') prev();
   });
-
-  // ---------- Vuốt / kéo hợp nhất chuột + cảm ứng (Pointer Events) ----------
   const stage = document.getElementById('stage');
   let startX = 0, startY = 0, startTime = 0, deltaX = 0, dragging = false;
   const SWIPE_THRESHOLD = 45;
-  const FLICK_VELOCITY = 0.55; // px/ms
+  const FLICK_VELOCITY = 0.55;
   const MAX_VERTICAL_DRIFT = 60;
-
   function isNavTarget(el){
     return !!(el && el.closest && el.closest('.controls, button, #prevBtn, #nextBtn'));
   }
-
   stage.addEventListener('pointerdown', (e) => {
     if (isAnimating) return;
     if (isNavTarget(e.target)) return;
@@ -660,7 +586,6 @@
     startX = e.clientX; startY = e.clientY; startTime = e.timeStamp; deltaX = 0;
     try { stage.setPointerCapture(e.pointerId); } catch(_){}
   });
-
   stage.addEventListener('pointermove', (e) => {
     if (!dragging || isAnimating) return;
     deltaX = e.clientX - startX;
@@ -671,34 +596,24 @@
       activePage.style.transform = `rotateY(${dragAngle}deg)`;
     }
   });
-
   function endDrag(e){
     if (!dragging) return;
     dragging = false;
-
     const deltaY = e.clientY - startY;
     const elapsed = Math.max(1, e.timeStamp - startTime);
     const velocity = deltaX / elapsed;
-
     const activePage = pages[current];
     if (activePage) activePage.style.transition = '';
     render();
-
     if (Math.abs(deltaY) > MAX_VERTICAL_DRIFT) return;
-
     const flickLeft = velocity <= -FLICK_VELOCITY && deltaX < 0;
     const flickRight = velocity >= FLICK_VELOCITY && deltaX > 0;
-
     if (deltaX <= -SWIPE_THRESHOLD || flickLeft) next();
     else if (deltaX >= SWIPE_THRESHOLD || flickRight) prev();
   }
-
   stage.addEventListener('pointerup', endDrag);
   stage.addEventListener('pointercancel', endDrag);
-
   render();
-
-  // Đồng hồ đếm đến 1000 khi mở trang
   function animateClock(){
     const ring = document.getElementById('clockRing');
     const numberEl = document.getElementById('clockNumber');
@@ -718,6 +633,5 @@
   }
   window.addEventListener('load', () => setTimeout(animateClock, 250));
 </script>
-
 </body>
 </html>
