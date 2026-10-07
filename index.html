@@ -265,10 +265,10 @@ img{display:block;width:100%;height:100%;object-fit:cover}
    Chỗ nào có {vi:'…',en:'…'} thì sửa cả 2 ngôn ngữ. */
 const C={
  lang:'vi',                        // ngôn ngữ mặc định: 'vi' hoặc 'en'  (link: ?lang=en)
- groom:{name:'An Cư',full:'NGUYỄN HOÀNG AN CƯ',
-        parents:{vi:['Ông. Nguyễn Hoàng Tùng','Bà. Trần Thị Kim Phượng'],en:['Mr. Nguyễn Hoàng Tùng','Mrs. Trần Thị Kim Phượng']},
+ groom:{name:'An Cư',full:'Đa Minh NGUYỄN HOÀNG AN CƯ',
+        parents:{vi:['Ông. Đa Minh Nguyễn Hoàng Tùng','Bà. Rosa Trần Thị Kim Phượng'],en:['Mr.Đa Minh Nguyễn Hoàng Tùng','Mrs. Rosa Trần Thị Kim Phượng']},
         city:{vi:'TP. Đồng Nai',en:'Dong Nai'}},
- bride:{name:'Khánh Ly',full:'TRƯƠNG KHÁNH LY',
+ bride:{name:'Khánh Ly',full:'Cecilia TRƯƠNG KHÁNH LY',
         parents:{vi:['Ông. Trương Đức Thi','Bà. Đinh Thị Lợi'],en:['Mr. Trương Đức Thi','Mrs. Đinh Thị Lợi']},
         city:{vi:'TP. Hồ Chí Minh',en:'Ho Chi Minh City'}},
  date:'2026-12-20T09:30',          // năm-tháng-ngày T giờ:phút (giờ Thánh lễ — dùng cho ngày + đếm ngược)
@@ -284,11 +284,11 @@ const C={
   {t:{vi:'Thánh Lễ Hôn Phối',en:'Nuptial Mass'},
    time:{vi:'9h30 Chủ nhật, ngày 20/12/2026',en:'9:30 AM, Sunday, December 20, 2026'},
    place:{vi:'Thánh Đường Giáo xứ Hòa Bình',en:'Hòa Bình Parish Church'},
-   addr:{vi:'Địa chỉ Thánh Đường (cập nhật)',en:'Church address (to be updated)'},img:''},
+   addr:{vi:'49 Khu phố 6, Hố Nai, Đồng Nai',en:'49 Khu phố 6, Hố Nai, Đồng Nai'},img:''},
   {t:{vi:'Tiệc Cưới',en:'Wedding Reception'},
    time:{vi:'11h00 Chủ nhật, ngày 20/12/2026',en:'11:00 AM, Sunday, December 20, 2026'},
-   place:{vi:'Tên nhà hàng',en:'Restaurant name'},
-   addr:{vi:'Địa chỉ nhà hàng (cập nhật) — chung vui cùng hai họ',en:'Restaurant address (to be updated) — joint celebration of both families'},img:''}],
+   place:{vi:'Trung tâm sự kiện Tavico',en:'Tavico'},
+   addr:{vi:'81 Đường Điểu Xiển, Khu phố 9, Phường Tân Biên (hoặc Long Bình), Thành phố Biên Hòa, Tỉnh Đồng Nai. — chung vui cùng hai họ',en:'81 Đường Điểu Xiển, Khu phố 9, Phường Tân Biên (hoặc Long Bình), Thành phố Biên Hòa, Tỉnh Đồng Nai. — joint celebration of both families'},img:''}],
  timeline:[['09:30',{vi:'Thánh lễ Hôn phối',en:'Nuptial Mass'}],['11:00',{vi:'Khai tiệc chung vui',en:'Wedding reception begins'}]],
  dress:['#ffffff','#9b9b97','#ebe8c9'],
  gift:{groom:{bank:'Ngân hàng',name:'NGUYEN HOANG AN CU',num:'0123456789',qr:''},
@@ -299,7 +299,7 @@ const C={
                       -> bản gốc tự hiểu là 'img/full/hero.jpg'  (xem hàm fullOf bên dưới)
     Cách 2 (tự chỉ định): ['img/hero.webp','goc/anh-hero-goc.jpg']
     Để trống '' = dùng ảnh mẫu. Nếu không tìm thấy bản gốc, lightbox dùng bản nhẹ. */
- img:{hero:'',groom:'',bride:'',banner:'',timeline:'',c1:'',c2:'',c3:'',gift:'',footer:''},
+ img:{hero:'images/hero.png',groom:'images/groom.png',bride:'images/bride.png',banner:'images/both.png',timeline:'',c1:'images/C1.png',c2:'images/C2.png',c3:'images/C3.png',gift:'',footer:''},
  gallery:[],                       // danh sách ảnh album, cùng quy tắc như trên (ảnh đầu là ảnh ngang lớn)
  music:'',                         // vd 'music.mp3'
  endpoint:''                       // (tuỳ chọn) link Google Apps Script nhận lời chúc/RSVP
