@@ -4,25 +4,30 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Thiệp cưới</title>
-<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@400;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;600&family=Great+Vibes&family=Montserrat:wght@400;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ===== BẢNG MÀU BEIGE — đổi tại đây ===== */
+/* ===== BẢNG MÀU XANH LÁ — đổi tại đây ===== */
 :root{
- --p:#f3eadb;      /* nền chính (beige sáng) */
- --sd:#e7d9c0;     /* beige đậm / sand */
- --d:#6f5a3f;      /* nâu taupe đậm */
- --m:#8b7556;      /* nâu nhạt cho album */
- --g:#7b5b32;      /* nhấn: nâu vàng */
- --g2:#8a6a40;     /* thẻ sự kiện */
- --gl:#b8996a;     /* vàng beige sáng */
- --tx:#5b4630;     /* màu chữ */
- --cream:#fbf5e8;
+ --p:#f8f8f5;      /* nền chính */
+ --d:#2d3a26;      /* mảng xanh đậm (olive) */
+ --m:#4a6249;      /* nền album */
+ --g:#0e4d25;      /* màu nhấn: xanh rừng */
+ --g2:#0e5a26;     /* thẻ sự kiện */
+ --gl:#6f8b72;     /* xanh nhạt */
+ --tx:#25503a;     /* chữ */
+ --bd:#666;        /* viền ô nhập */
+ --cream:#f1efe6;
+ --bg:#cfd3c8;     /* nền ngoài khung */
+ /* phong bì */
+ --e1:#eef2ea;--e2:#d5dfcd;--e3:#bfcdb4;
+ --eb1:#bccbb2;--eb2:#a9bb9e;--ef1:#d6e0cf;--ef2:#c8d6bf;--fp1:#d1ddc9;--fp2:#bfcfb5;
+ --s1:#5b8a60;--s2:#1f4a2b;--st:#f1efe6;
 }
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
 html.lock,html.lock body{overflow:hidden;height:100%}
-body{background:#d8ccb4;font-family:'Cormorant Garamond',serif;color:var(--tx);-webkit-tap-highlight-color:transparent}
-#app{max-width:480px;margin:auto;background:var(--p) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .28 0 0 0 .1 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");position:relative;overflow:hidden;box-shadow:0 0 40px #0003}
+body{background:var(--bg);font-family:'Cormorant Garamond',serif;color:var(--tx);-webkit-tap-highlight-color:transparent}
+#app{max-width:480px;margin:auto;background:var(--p) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .4 0 0 0 0 .4 0 0 0 .1 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");position:relative;overflow:hidden;box-shadow:0 0 40px #0003}
 section{position:relative;text-align:center}
 img{display:block;width:100%;height:100%;object-fit:cover}
 .sc{font-family:Allura,cursive;font-weight:400}
@@ -30,17 +35,22 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 .w{padding:56px 24px;overflow:hidden}
 .dk{background:var(--d);color:var(--cream)}
 
+/* ===== công tắc ngôn ngữ ===== */
+#tg{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:max(12px,calc(50% - 228px));z-index:30;display:flex;align-items:center;gap:4px;padding:4px 6px;border-radius:30px;background:#fffffff0;box-shadow:0 2px 10px #0003;font:600 12px Montserrat}
+#tg button{border:0;background:0;cursor:pointer;font:inherit;color:#555;padding:5px 9px;border-radius:20px;transition:background .3s,color .3s}
+#tg button.on{background:var(--g);color:#fff}
+
 /* ===== ENVELOPE (tự mở thiệp) ===== */
 #env{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:46px;
- background:radial-gradient(circle at 50% 40%,#f6eddc,#e6d7ba 70%,#d9c8a6);transition:opacity 1.2s ease,visibility 0s 1.2s}
+ background:radial-gradient(circle at 50% 40%,var(--e1),var(--e2) 70%,var(--e3));transition:opacity 1.2s ease,visibility 0s 1.2s}
 #env.out{opacity:0;visibility:hidden;pointer-events:none}
-#env:before{content:"";position:absolute;inset:0;opacity:.5;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .28 0 0 0 .12 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
+#env:before{content:"";position:absolute;inset:0;opacity:.5;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .4 0 0 0 0 .4 0 0 0 .12 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
 .ew{position:relative;width:min(86vw,360px);aspect-ratio:1.3;perspective:1400px;transform:translateY(6vh);transition:transform 1.4s cubic-bezier(.6,0,.2,1)}
 #env.zoom .ew{transform:translateY(6vh) scale(2.4)}
 .eb,.ef,.fp,.ec2{position:absolute}
-.eb{inset:0;background:linear-gradient(#dccaa6,#d0bb92);border-radius:6px;box-shadow:0 24px 50px #5b46304d}
-.ef{inset:0;z-index:3;border-radius:6px;background:linear-gradient(135deg,#ecdfc4,#e3d3b2);clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%);filter:drop-shadow(0 -2px 3px #0002)}
-.fp{left:0;right:0;top:0;height:56%;z-index:4;transform-origin:top;background:linear-gradient(#e8d9bb,#dcc9a3);clip-path:polygon(0 0,100% 0,50% 100%);border-radius:6px 6px 0 0;backface-visibility:visible}
+.eb{inset:0;background:linear-gradient(var(--eb1),var(--eb2));border-radius:6px;box-shadow:0 24px 50px #0003}
+.ef{inset:0;z-index:3;border-radius:6px;background:linear-gradient(135deg,var(--ef1),var(--ef2));clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%);filter:drop-shadow(0 -2px 3px #0002)}
+.fp{left:0;right:0;top:0;height:56%;z-index:4;transform-origin:top;background:linear-gradient(var(--fp1),var(--fp2));clip-path:polygon(0 0,100% 0,50% 100%);border-radius:6px 6px 0 0;backface-visibility:visible}
 #env.open .fp{animation:flap 1s .35s forwards cubic-bezier(.5,0,.3,1)}
 @keyframes flap{0%{transform:rotateX(0);z-index:4}45%{z-index:4}50%{z-index:1}100%{transform:rotateX(180deg);z-index:1}}
 .ec2{left:5%;right:5%;top:7%;height:90%;z-index:2;background:var(--cream);border-radius:4px;box-shadow:0 2px 12px #0002;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--tx);padding:14px;transition:transform 1.1s 1.15s cubic-bezier(.3,.7,.2,1)}
@@ -50,9 +60,9 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 .ec2 small{font:400 15px 'Cormorant Garamond';letter-spacing:2px;margin-top:8px}
 .ec2:before{content:"";position:absolute;inset:7px;border:1px solid var(--gl);border-radius:2px;opacity:.7}
 #seal{position:absolute;z-index:6;left:50%;top:56%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;
- background:radial-gradient(circle at 35% 30%,#c9a974,#8a6a40 70%);color:#fbf1da;font:400 26px/68px Allura;text-align:center;box-shadow:0 5px 12px #0005,inset 0 0 0 3px #ffffff22;animation:pulse 1.6s infinite;transition:opacity .4s,transform .5s}
+ background:radial-gradient(circle at 35% 30%,var(--s1),var(--s2) 70%);color:var(--st);font:400 30px/66px 'Great Vibes',cursive;letter-spacing:4px;text-indent:4px;text-align:center;box-shadow:0 5px 12px #0005,inset 0 0 0 3px #ffffff22;animation:pulse 1.6s infinite;transition:opacity .4s,transform .5s}
 #env.open #seal{opacity:0;transform:scale(1.5);animation:none}
-@keyframes pulse{50%{transform:scale(1.09);box-shadow:0 5px 22px #8a6a4099,inset 0 0 0 3px #ffffff22}}
+@keyframes pulse{50%{transform:scale(1.09);box-shadow:0 5px 22px #0006,inset 0 0 0 3px #ffffff22}}
 #env p{position:relative;text-align:center;font:400 17px/1.5 'Playfair Display';letter-spacing:2px;color:var(--g);animation:fin 1.4s .3s both;transition:opacity .5s}
 #env p b{display:block;font:400 34px/1.2 Allura;letter-spacing:0;margin-top:2px}
 #env.open p{opacity:0}
@@ -80,6 +90,9 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 .go .hero .sc{opacity:1;animation:wipe 2.6s .4s cubic-bezier(.55,0,.25,1) forwards}
 .go .hero .pf{animation:up 1.4s 1.8s both}.go .hero p{animation:up 1.4s 2.2s both}
 @keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+/* đổi ngôn ngữ giữa chừng: không chạy lại hiệu ứng mở đầu */
+.inst .hero img{animation:none!important;transform:none}
+.inst .hero .sc,.inst .hero .pf,.inst .hero p{animation:none!important;opacity:1;clip-path:none}
 .fl{position:absolute;pointer-events:none;stroke:#fff;fill:none;stroke-width:1.1;opacity:.3}
 .fl path,.fl ellipse{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 3.4s ease}
 .in .fl path,.in .fl ellipse,.fl.in path,.fl.in ellipse{stroke-dashoffset:0}
@@ -98,16 +111,22 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 /* invite */
 .fam{display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:15px;line-height:1.7}
 .fam h4{font:600 16px 'Playfair Display';letter-spacing:1px;margin-bottom:12px}
-.mono{width:150px;margin:26px auto 18px;position:relative}
-.mono svg{width:100%;overflow:visible}.mono text{font:400 52px 'Playfair Display';fill:var(--g)}
-.mono ellipse{stroke:var(--gl);fill:none;stroke-width:1.2;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 3s}
-.mono.in ellipse{stroke-dashoffset:0}
+
+/* ===== MONOGRAM: chữ L (trên) và C (dưới), calligraphy, tách rời nhau ===== */
+.mono{width:168px;margin:26px auto 18px;position:relative}
+.mono svg{width:100%;overflow:visible;display:block}
+.mono ellipse{stroke:var(--gl);fill:none;stroke-width:1.4;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 3s}
+.mono text{font-family:'Great Vibes',cursive;fill:transparent;stroke:var(--g);stroke-width:.9;stroke-linejoin:round;stroke-dasharray:1600;stroke-dashoffset:1600;transition:stroke-dashoffset 3s cubic-bezier(.5,0,.3,1),fill 1.2s 2.3s}
+.mono .m2{transition:stroke-dashoffset 3s .7s cubic-bezier(.5,0,.3,1),fill 1.2s 3s}
+.mono.in ellipse,.mono.in text{stroke-dashoffset:0}
+.mono.in text{fill:var(--g)}
+
 .inv{font-size:17px;font-style:italic}
 .guest{font:400 34px/1.2 Allura;font-weight:700;color:var(--tx);text-decoration:underline;text-underline-offset:6px;display:inline-block;margin:6px 0}
 .nm{font:400 clamp(21px,6.3vw,27px)/1.3 'Playfair Display';color:var(--tx);margin-top:26px;text-wrap:balance}.nm i{display:block;font:400 30px Allura;margin:4px 0}
 .dt{display:flex;justify-content:center;align-items:center;gap:18px;margin:22px 0 14px;font:400 19px 'Playfair Display'}
 .dt>b{font-weight:400;opacity:.8}
-.wh{border:solid #a8957a;border-width:0 1px;padding:0 20px;font:400 44px/1.12 'Playfair Display';color:var(--g);min-width:84px}
+.wh{border:solid var(--gl);border-width:0 1px;padding:0 20px;font:400 44px/1.12 'Playfair Display';color:var(--g);min-width:84px}
 .wl{display:block;height:1.12em;overflow:hidden;-webkit-mask-image:linear-gradient(transparent,#000 20%,#000 80%,transparent);mask-image:linear-gradient(transparent,#000 20%,#000 80%,transparent)}
 .wc{transition:transform 2.4s cubic-bezier(.15,.8,.2,1)}
 .wc b{display:block;height:1.12em;font-weight:400}
@@ -124,8 +143,8 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 .ban .tt{position:absolute;z-index:2;left:24px;bottom:30px;text-align:left}
 .ban .sc{font-size:62px;display:block;line-height:.7}.ban b{font:500 52px 'Playfair Display';letter-spacing:2px}
 .cal{padding:50px 22px 40px;overflow:hidden}
-.yr{position:relative;font:500 96px/1 'Playfair Display';background:linear-gradient(#7b5b32,#c2a272);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
-.yr i{position:absolute;left:12%;bottom:-34px;font:400 64px Allura;color:#8a6a40;-webkit-text-fill-color:#8a6a40;opacity:.8}
+.yr{position:relative;font:500 96px/1 'Playfair Display';background:linear-gradient(var(--g),var(--gl));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+.yr i{position:absolute;left:12%;bottom:-34px;font:400 64px Allura;color:var(--g2);-webkit-text-fill-color:var(--g2);opacity:.8}
 .cg{display:grid;grid-template-columns:repeat(7,1fr);gap:16px 0;margin:62px 6px 28px;font-size:15px}
 .cg b{font:600 13px 'Playfair Display'}.cg span{height:30px;line-height:30px;position:relative}
 .cg .hl{color:var(--g)}.cg svg{position:absolute;left:50%;top:50%;width:36px;margin:-16px 0 0 -18px;fill:none;stroke:var(--g);stroke-width:2;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2s .8s}
@@ -181,11 +200,11 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 .gb h2,.rs h2{font:400 52px/1.1 Allura;color:var(--g)}
 .gb p,.rs p{font:400 17px/1.5 'Playfair Display';margin:14px 0 26px}
 .fm{display:grid;gap:12px;text-align:left}
-.fm input,.fm textarea,.fm select{font:400 14px Montserrat;color:var(--tx);border:1px solid #8a7a64;background:#fffaf0aa;padding:12px;width:100%;border-radius:0;outline:0;transition:border-color .3s,box-shadow .3s}
-.fm input:focus,.fm textarea:focus,.fm select:focus{border-color:var(--g);box-shadow:0 0 0 3px #7b5b3224}
+.fm input,.fm textarea,.fm select{font:400 14px Montserrat;color:var(--tx);border:1px solid var(--bd);background:#fffffffa;padding:12px;width:100%;border-radius:0;outline:0;transition:border-color .3s,box-shadow .3s}
+.fm input:focus,.fm textarea:focus,.fm select:focus{border-color:var(--g);box-shadow:0 0 0 3px color-mix(in srgb,var(--g) 15%,transparent)}
 .fm textarea{height:130px;resize:none}
 .fm .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.fm .ra{border:1px solid #8a7a64;padding:12px;display:flex;gap:16px;font:400 14px Montserrat;flex-wrap:wrap}.fm .ra input{width:auto;margin-right:6px}
+.fm .ra{border:1px solid var(--bd);padding:12px;display:flex;gap:16px;font:400 14px Montserrat;flex-wrap:wrap}.fm .ra input{width:auto;margin-right:6px}
 .fm button{background:var(--g);color:#fff;border:0;padding:16px;font:600 15px Montserrat;letter-spacing:1px;cursor:pointer;transition:transform .2s,background .3s}
 .fm button:active{transform:scale(.98)}
 .rs .fm button{font:600 20px Montserrat}
@@ -218,10 +237,10 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 .al{width:min(80vw,300px);padding:22px 20px 14px;text-align:left}.al b{font:600 16px Montserrat}.al p{margin:18px 0}.al button{background:0;border:0;float:right;font:600 14px Montserrat;color:#222;cursor:pointer;padding:6px 12px}
 
 /* music */
-.mu{position:fixed;left:max(12px,calc(50% - 228px));bottom:20px;width:46px;height:46px;border-radius:50%;background:#f6efe0;border:0;z-index:20;display:grid;place-items:center;box-shadow:0 2px 10px #0004;cursor:pointer}
+.mu{position:fixed;left:max(12px,calc(50% - 228px));bottom:20px;width:46px;height:46px;border-radius:50%;background:var(--cream);border:0;z-index:20;display:grid;place-items:center;box-shadow:0 2px 10px #0004;cursor:pointer}
 .mu svg{width:22px;fill:var(--d)}.mu.on svg{animation:sp 3s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.r,.wp{opacity:1;transform:none;clip-path:none}.hero .sc,.hero .pf,.hero p{opacity:1;clip-path:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.r,.wp{opacity:1;transform:none;clip-path:none}.hero .sc,.hero .pf,.hero p{opacity:1;clip-path:none}.mono ellipse,.mono text{stroke-dashoffset:0}.mono text{fill:var(--g)}}
 </style>
 </head>
 <body>
@@ -235,27 +254,43 @@ img{display:block;width:100%;height:100%;object-fit:cover}
  </div>
  <p id="envtxt"></p>
 </div>
+<div id="tg"><button data-lang="vi">VI</button><button data-lang="en">EN</button></div>
 <div id="app"></div>
 <div class="ov" id="lb"><button class="x2">×</button><img alt=""></div>
 <div class="ov" id="md"></div>
-<button class="mu" id="mu" aria-label="Nhạc"><svg viewBox="0 0 24 24"><path d="M9 3v11.5A3.5 3.5 0 1 0 11 18V7h6V3z"/></svg></button>
+<button class="mu" id="mu" aria-label="Music"><svg viewBox="0 0 24 24"><path d="M9 3v11.5A3.5 3.5 0 1 0 11 18V7h6V3z"/></svg></button>
 
 <script>
-/* ============ CHỈNH SỬA THÔNG TIN TẠI ĐÂY ============ */
+/* ============ CHỈNH SỬA THÔNG TIN TẠI ĐÂY ============
+   Chỗ nào có {vi:'…',en:'…'} thì sửa cả 2 ngôn ngữ. */
 const C={
- groom:{name:'An Cư',full:'NGUYỄN HOÀNG AN CƯ',parents:['Ông. Nguyễn Hoàng Tùng','Bà. Trần Thị Kim Phượng'],city:'TP. Đồng Nai'},
- bride:{name:'Khánh Ly',full:'TRƯƠNG KHÁNH LY',parents:['Ông. Trương Đức Thi','Bà. Đinh Thị Lợi'],city:'TP. Hồ Chí Minh'},
- date:'2026-12-20T09:30',          // năm-tháng-ngày T giờ:phút (giờ của Thánh lễ — dùng cho ngày + đếm ngược)
- lunar:'',                         // vd '( Tức ngày .. tháng .. năm Bính Ngọ )' — để trống sẽ tự ẩn
+ lang:'vi',                        // ngôn ngữ mặc định: 'vi' hoặc 'en'  (link: ?lang=en)
+ groom:{name:'An Cư',full:'NGUYỄN HOÀNG AN CƯ',
+        parents:{vi:['Ông. Nguyễn Hoàng Tùng','Bà. Trần Thị Kim Phượng'],en:['Mr. Nguyễn Hoàng Tùng','Mrs. Trần Thị Kim Phượng']},
+        city:{vi:'TP. Đồng Nai',en:'Dong Nai'}},
+ bride:{name:'Khánh Ly',full:'TRƯƠNG KHÁNH LY',
+        parents:{vi:['Ông. Trương Đức Thi','Bà. Đinh Thị Lợi'],en:['Mr. Trương Đức Thi','Mrs. Đinh Thị Lợi']},
+        city:{vi:'TP. Hồ Chí Minh',en:'Ho Chi Minh City'}},
+ date:'2026-12-20T09:30',          // năm-tháng-ngày T giờ:phút (giờ Thánh lễ — dùng cho ngày + đếm ngược)
+ lunar:{vi:'',en:''},              // vd {vi:'( Tức ngày .. tháng .. năm Bính Ngọ )',en:''} — để trống sẽ tự ẩn
  tagline:'WHEN TWO HEARTS BEAT AS ONE',
  sub:'They create a soul strong enough to last forever!',
- guest:'Quý Khách',                // đổi tên khách bằng link: ?to=Anh%20Nam
+ guest:{vi:'Quý Khách',en:'Dear Guest'},   // đổi tên khách bằng link: ?to=Anh%20Nam
+ /* Monogram trong khung oval: để trống = tự lấy chữ cái đầu tên (cô dâu ở trên, chú rể ở dưới).
+    Hai chữ nằm chéo, TÁCH RỜI nhau. Khung 150×200; topXY/botXY là điểm chân chữ; size là cỡ chữ. */
+ mono:{top:'',bottom:'',topXY:[62,90],botXY:[90,160],size:78},
  /* Địa điểm: mỗi mục vừa hiện ở phần lời mời, vừa thành 1 thẻ sự kiện */
  events:[
-  {t:'Thánh Lễ Hôn Phối',time:'9h30 Chủ nhật, ngày 20/12/2026',place:'Thánh Đường Giáo xứ Hòa Bình',addr:'Địa chỉ Thánh Đường (cập nhật)',img:''},
-  {t:'Tiệc Cưới',time:'11h00 Chủ nhật, ngày 20/12/2026',place:'Tên nhà hàng',addr:'Địa chỉ nhà hàng (cập nhật) — chung vui cùng hai họ',img:''}],
- timeline:[['09:30','Thánh lễ Hôn phối'],['11:00','Khai tiệc chung vui']],
- dress:['#ffffff','#b9a58a','#e9dcc0'],
+  {t:{vi:'Thánh Lễ Hôn Phối',en:'Nuptial Mass'},
+   time:{vi:'9h30 Chủ nhật, ngày 20/12/2026',en:'9:30 AM, Sunday, December 20, 2026'},
+   place:{vi:'Thánh Đường Giáo xứ Hòa Bình',en:'Hòa Bình Parish Church'},
+   addr:{vi:'Địa chỉ Thánh Đường (cập nhật)',en:'Church address (to be updated)'},img:''},
+  {t:{vi:'Tiệc Cưới',en:'Wedding Reception'},
+   time:{vi:'11h00 Chủ nhật, ngày 20/12/2026',en:'11:00 AM, Sunday, December 20, 2026'},
+   place:{vi:'Tên nhà hàng',en:'Restaurant name'},
+   addr:{vi:'Địa chỉ nhà hàng (cập nhật) — chung vui cùng hai họ',en:'Restaurant address (to be updated) — joint celebration of both families'},img:''}],
+ timeline:[['09:30',{vi:'Thánh lễ Hôn phối',en:'Nuptial Mass'}],['11:00',{vi:'Khai tiệc chung vui',en:'Wedding reception begins'}]],
+ dress:['#ffffff','#9b9b97','#ebe8c9'],
  gift:{groom:{bank:'Ngân hàng',name:'NGUYEN HOANG AN CU',num:'0123456789',qr:''},
        bride:{bank:'Ngân hàng',name:'TRUONG KHANH LY',num:'9876543210',qr:''}},
 
@@ -266,88 +301,150 @@ const C={
     Để trống '' = dùng ảnh mẫu. Nếu không tìm thấy bản gốc, lightbox dùng bản nhẹ. */
  img:{hero:'',groom:'',bride:'',banner:'',timeline:'',c1:'',c2:'',c3:'',gift:'',footer:''},
  gallery:[],                       // danh sách ảnh album, cùng quy tắc như trên (ảnh đầu là ảnh ngang lớn)
- music:'',                         // vd 'music.mp3' (tự phát nếu trình duyệt cho phép, nếu không sẽ phát khi khách chạm lần đầu)
+ music:'',                         // vd 'music.mp3'
  endpoint:''                       // (tuỳ chọn) link Google Apps Script nhận lời chúc/RSVP
 };
 /* quy tắc suy ra đường dẫn ảnh gốc từ ảnh nhẹ: img/xxx.webp -> img/full/xxx.jpg */
 const fullOf=p=>p.replace(/^img\//,'img/full/').replace(/\.(webp|avif)$/i,'.jpg');
-/* ======================================================= */
+
+/* ===== CHỮ GIAO DIỆN 2 NGÔN NGỮ ===== */
+const U={
+vi:{grL:'Chú rể',brL:'Cô dâu',famG:'NHÀ TRAI',famB:'NHÀ GÁI',inv1:'Trân trọng kính mời',inv2:'tới dự Thánh lễ Hôn phối và Tiệc cưới<br>chung vui cùng chúng tôi',dir:'CHỈ ĐƯỜNG',
+ wk:['Thứ 2','Thứ 3','Thứ 4','Thứ 5','Thứ 6','Thứ 7','CN'],wd:['CHỦ NHẬT','THỨ HAI','THỨ BA','THỨ TƯ','THỨ NĂM','THỨ SÁU','THỨ BẢY'],cdl:['ngày','giờ','phút','giây'],
+ evh:'Thánh Lễ và Tiệc Cưới',rsvpB:'Xác nhận tham dự',mapB:'Xem bản đồ',more:'XEM THÊM',
+ gbH:'Sổ lưu bút',gbP:'Cảm ơn bạn rất nhiều vì đã gửi những lời chúc mừng tốt đẹp nhất đến đám cưới của chúng tôi!',yname:'Tên của bạn',wishPh:'Gửi lời chúc tới cô dâu chú rể',wishB:'GỬI LỜI CHÚC',
+ giftH:'Hộp mừng cưới',giftP:'Cảm ơn tình cảm của mọi người đã dành cho chúng mình!',giftM:'Vợ chồng xin cảm ơn tất cả tình cảm của mọi người ạ ❤️',gG:'MỪNG CƯỚI ĐẾN CHÚ RỂ',gB:'MỪNG CƯỚI ĐẾN CÔ DÂU',qr:'Tải ảnh QR',cp:'Copy STK',cpd:'Đã copy ✓',
+ rsH:'Bạn sẽ tham dự chứ?',rsP:'Hãy xác nhận sự có mặt của bạn trước để chúng mình<br>chuẩn bị đón tiếp một cách chu đáo nhất.<br>Trân trọng!',phone:'Số điện thoại',yes:'Có, tôi sẽ đến',no:'Xin lỗi, tôi bận mất rồi',both:'Cả hai',
+ w:['Tôi tới 1 mình','Tôi đi cùng 1 người','Tôi đi cùng 2 người','Tôi đi cùng 3 người'],note:'Lời nhắn',send:'Gửi Xác Nhận',notice:'Thông báo',thxW:'Cảm ơn bạn đã gửi lời chúc!',thxR:'Cảm ơn bạn đã xác nhận! Hẹn gặp bạn nhé.',envInv:'Trân trọng kính mời'},
+en:{grL:'The Groom',brL:'The Bride',famG:"GROOM'S FAMILY",famB:"BRIDE'S FAMILY",inv1:'With great joy, we invite',inv2:'to celebrate our Nuptial Mass and<br>Wedding Reception with us',dir:'DIRECTIONS',
+ wk:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],wd:['SUNDAY','MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY'],cdl:['days','hours','mins','secs'],
+ evh:'Ceremony & Reception',rsvpB:'RSVP',mapB:'View map',more:'SEE MORE',
+ gbH:'Guestbook',gbP:'Thank you so much for sending your warmest wishes for our wedding!',yname:'Your name',wishPh:'Write your wishes for the bride and groom',wishB:'SEND WISHES',
+ giftH:'Wedding Gift Box',giftP:'Thank you for all the love you have shown us!',giftM:'With heartfelt thanks for all your love ❤️',gG:'GIFT TO THE GROOM',gB:'GIFT TO THE BRIDE',qr:'Save QR',cp:'Copy account no.',cpd:'Copied ✓',
+ rsH:'Will you join us?',rsP:'Please let us know if you can come<br>so we can welcome you with the utmost care.<br>With gratitude!',phone:'Phone number',yes:'Yes, I will be there',no:"Sorry, I can't make it",both:'Both',
+ w:['Just me','Me + 1 guest','Me + 2 guests','Me + 3 guests'],note:'Message',send:'Send RSVP',notice:'Notice',thxW:'Thank you for your wishes!',thxR:'Thank you for confirming! See you there.',envInv:'With great joy, we invite'}
+};
+
+/* ===== trạng thái ngôn ngữ ===== */
+const store={get:k=>{try{return localStorage.getItem(k)}catch(_){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(_){}}};
+const qp=new URLSearchParams(location.search);
+let lang=['vi','en'].includes(qp.get('lang'))?qp.get('lang'):(store.get('w_lang')||C.lang);
+if(!U[lang])lang='vi';
+const tr=x=>(x&&typeof x==='object'&&!Array.isArray(x)&&('vi' in x||'en' in x))?(x[lang]??x.vi):x;
+const trv=x=>(x&&typeof x==='object'&&!Array.isArray(x)&&'vi' in x)?x.vi:x;   // luôn tiếng Việt (dùng cho tìm bản đồ)
+const u=k=>U[lang][k];
+
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
-const ph=(n,a='#cdb792',b='#7a6548',c='#fff')=>'data:image/svg+xml,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 800'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='${a}'/><stop offset='1' stop-color='${b}'/></linearGradient></defs><rect width='600' height='800' fill='url(#g)'/><text x='300' y='410' fill='${c}' fill-opacity='.7' font-family='sans-serif' font-size='34' text-anchor='middle'>${n}</text></svg>`);
+const ph=(n,a='#8fa88c',b='#2d3a26',c='#fff')=>'data:image/svg+xml,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 800'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='${a}'/><stop offset='1' stop-color='${b}'/></linearGradient></defs><rect width='600' height='800' fill='url(#g)'/><text x='300' y='410' fill='${c}' fill-opacity='.7' font-family='sans-serif' font-size='34' text-anchor='middle'>${n}</text></svg>`);
 const pic=v=>Array.isArray(v)?{s:v[0],f:v[1]||fullOf(v[0])}:{s:v,f:fullOf(v)};
 const imgTag=(v,label,extra='')=>{if(!v)return `<img src="${ph(label)}" alt="" ${extra}>`;const p=pic(v);return `<img src="${p.s}" data-full="${p.f}" alt="" ${extra}>`};
 const I=(k,l)=>imgTag(C.img[k],l||'Ảnh '+k,k==='hero'?'loading="eager"':'loading="lazy"');
 const D=new Date(C.date),pad=n=>String(n).padStart(2,'0');
-const WD=['CHỦ NHẬT','THỨ HAI','THỨ BA','THỨ TƯ','THỨ NĂM','THỨ SÁU','THỨ BẢY'];
 const MN=['January','February','March','April','May','June','July','August','September','October','November','December'];
 const ini=s=>s.trim().split(' ').pop()[0].toUpperCase();
+const monoTop=()=>C.mono.top||ini(C.bride.name),monoBot=()=>C.mono.bottom||ini(C.groom.name);
 const FL=(s='')=>`<svg class="fl" viewBox="0 0 120 200" style="${s}"><path pathLength="1" d="M14 196C22 150 34 104 62 62"/><path pathLength="1" d="M62 62c-6-22 4-38 22-46 5 22-6 40-22 46z"/><path pathLength="1" d="M38 112c-20-6-30-20-32-36 20 2 32 16 32 36z"/><path pathLength="1" d="M30 150c16-12 32-14 48-6-10 16-28 20-48 6z"/><ellipse pathLength="1" cx="76" cy="46" rx="9" ry="20" transform="rotate(40 76 46)"/><ellipse pathLength="1" cx="76" cy="46" rx="9" ry="20" transform="rotate(-20 76 46)"/><ellipse pathLength="1" cx="76" cy="46" rx="9" ry="20" transform="rotate(100 76 46)"/></svg>`;
 const mapUrl=a=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(a);
-const gal=C.gallery.length?C.gallery:Array.from({length:11},(_,i)=>'');
-const gk=gal.map((s,i)=>`<div class="${i>5?'x':''}" style="aspect-ratio:${i?['3/4','3/4','1/1','3/4'][i%4]:'4/3'}">${imgTag(s,'Ảnh album '+(i+1),'class="zm" loading="lazy"')}</div>`).join('');
-const cal=(()=>{const y=D.getFullYear(),m=D.getMonth(),f=(new Date(y,m,1).getDay()+6)%7,n=new Date(y,m+1,0).getDate();let h=['Thứ 2','Thứ 3','Thứ 4','Thứ 5','Thứ 6','Thứ 7','CN'].map(x=>`<b>${x}</b>`).join('')+'<span></span>'.repeat(f);
- for(let d=1;d<=n;d++)h+=d==D.getDate()?`<span class="hl">${d}<svg viewBox="0 0 36 32"><path pathLength="1" d="M18 29C4 19 2 11 6 6c4-4 10-2 12 3 2-5 8-7 12-3 4 5 2 13-12 23z"/></svg></span>`:`<span>${d}</span>`;return h})();
-const fam=(p)=>`<div><h4>${p.t}</h4>${p.parents.join('<br>')}<br>${p.city}</div>`;
-const gc=(g,t)=>`<div><b>${t}</b><img src="${g.qr||ph('QR','#f1f1f1','#d6d6d6','#222')}" alt="QR"><div>${g.bank}<br>${g.name}<br>${g.num}</div><a href="${g.qr||ph('QR')}" download="qr-${t}.png"><button style="border:0;background:#eee;border-radius:20px;padding:6px 10px;font:11px Montserrat;margin:6px 2px;cursor:pointer">Tải ảnh QR</button></a><button data-cp="${g.num}">Copy STK</button></div>`;
-const evs=C.events.map((e,i)=>`<div class="ec r ${i%2?'rt':'l'}"><div class="ph">${imgTag(e.img,'Ảnh địa điểm')}</div><h3>${e.t}</h3><p>🕒 ${e.time}</p><p>📍 ${e.place}<small>${e.addr}</small></p><div class="bs"><button data-rv="${e.t}">Xác nhận tham dự</button><button data-mp="${e.place+' '+e.addr}">Xem bản đồ</button></div></div>`).join('');
-const venues=C.events.map(e=>`<div class="vn r"><h3>${e.t.toUpperCase()}</h3><div class="tm">${e.time}</div><h2>${e.place}</h2><p>${e.addr}</p><a class="bt" href="${mapUrl(e.place+' '+e.addr)}" target="_blank" rel="noopener">📍 CHỈ ĐƯỜNG</a></div>`).join('');
-document.title=`Thiệp cưới ${C.groom.name} & ${C.bride.name}`;
-const to=new URLSearchParams(location.search).get('to')||C.guest;
-const dd=`${pad(D.getDate())}.${pad(D.getMonth()+1)}.${D.getFullYear()}`;
-const hourLbl=`${D.getHours()} GIỜ${D.getMinutes()?' '+pad(D.getMinutes()):''}`;
+const hourLbl=()=>{const h=D.getHours(),m=D.getMinutes();return lang==='vi'?`${h} GIỜ${m?' '+pad(m):''}`:`${h%12||12}:${pad(m)} ${h<12?'AM':'PM'}`};
+const monoSVG=()=>{const M=C.mono;return `<svg viewBox="0 0 150 200">
+ <ellipse cx="75" cy="100" rx="62" ry="92" pathLength="1"/>
+ <text class="m1" x="${M.topXY[0]}" y="${M.topXY[1]}" font-size="${M.size}" text-anchor="middle">${monoTop()}</text>
+ <text class="m2" x="${M.botXY[0]}" y="${M.botXY[1]}" font-size="${M.size}" text-anchor="middle">${monoBot()}</text></svg>`};
 
-/* ---- phong bì ---- */
-$('#ecard').innerHTML=`<span class="sc">Save the date</span><b>${C.groom.name} &amp; ${C.bride.name}</b><small>${dd}</small>`;
-$('#seal').textContent=ini(C.groom.name)+'&'+ini(C.bride.name);
-$('#envtxt').innerHTML=`Trân trọng kính mời<b>${to}</b>`;
+/* ===== DỰNG TRANG theo ngôn ngữ hiện tại ===== */
+let galOpen=false,ps2=[];
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);if(e.target.matches('.dt'))roll(e.target)}}),{threshold:.18});
+function roll(el){$$('.wl',el).forEach((w,i)=>{const c=$('.wc',w),t=+w.dataset.n;setTimeout(()=>{c.style.transform=`translateY(${-t*1.12}em)`},150+i*250)})}
 
-$('#app').innerHTML=`
+function build(instant){
+ const y=scrollY,st={};
+ $$('#app form').forEach(f=>$$('[name]',f).forEach(e=>{st[f.id+'.'+e.name+(e.type==='radio'?'.'+e.value:'')]=e.type==='radio'?e.checked:e.tagName==='SELECT'?e.selectedIndex:e.value}));
+ const toP=qp.get('to'),guest=toP||tr(C.guest);
+ const dd=`${pad(D.getDate())}.${pad(D.getMonth()+1)}.${D.getFullYear()}`;
+ const fam=(t,p)=>`<div><h4>${t}</h4>${tr(p.parents).join('<br>')}<br>${tr(p.city)}</div>`;
+ const evs=C.events.map((e,i)=>`<div class="ec r ${i%2?'rt':'l'}"><div class="ph">${imgTag(e.img,'Ảnh địa điểm')}</div><h3>${tr(e.t)}</h3><p>🕒 ${tr(e.time)}</p><p>📍 ${tr(e.place)}<small>${tr(e.addr)}</small></p><div class="bs"><button data-rv="${tr(e.t)}">${u('rsvpB')}</button><button data-mp="${trv(e.place)+' '+trv(e.addr)}">${u('mapB')}</button></div></div>`).join('');
+ const venues=C.events.map(e=>`<div class="vn r"><h3>${tr(e.t).toUpperCase()}</h3><div class="tm">${tr(e.time)}</div><h2>${tr(e.place)}</h2><p>${tr(e.addr)}</p><a class="bt" href="${mapUrl(trv(e.place)+' '+trv(e.addr))}" target="_blank" rel="noopener">📍 ${u('dir')}</a></div>`).join('');
+ const gal=C.gallery.length?C.gallery:Array.from({length:11},()=>'');
+ const gk=gal.map((s,i)=>`<div class="${i>5?'x':''}" style="aspect-ratio:${i?['3/4','3/4','1/1','3/4'][i%4]:'4/3'}">${imgTag(s,'Ảnh album '+(i+1),'class="zm" loading="lazy"')}</div>`).join('');
+ const cal=(()=>{const yy=D.getFullYear(),m=D.getMonth(),f=(new Date(yy,m,1).getDay()+6)%7,n=new Date(yy,m+1,0).getDate();let h=u('wk').map(x=>`<b>${x}</b>`).join('')+'<span></span>'.repeat(f);
+  for(let d=1;d<=n;d++)h+=d==D.getDate()?`<span class="hl">${d}<svg viewBox="0 0 36 32"><path pathLength="1" d="M18 29C4 19 2 11 6 6c4-4 10-2 12 3 2-5 8-7 12-3 4 5 2 13-12 23z"/></svg></span>`:`<span>${d}</span>`;return h})();
+
+ if($('#env')){
+  $('#ecard').innerHTML=`<span class="sc">Save the date</span><b>${C.groom.name} &amp; ${C.bride.name}</b><small>${dd}</small>`;
+  $('#seal').textContent=monoTop()+monoBot();
+  $('#envtxt').innerHTML=`${u('envInv')}<b>${guest}</b>`;
+ }
+
+ $('#app').innerHTML=`
 <section class="hero">${I('hero','Ảnh bìa')}<div class="t"><div class="sc">Save the date</div><div class="pf">${C.groom.name} &amp; ${C.bride.name}</div><p>${dd}</p></div></section>
 <section class="dk"><div class="tag r">${FL('right:0;top:0;width:150px;transform:scaleX(-1)')}${C.tagline}<i></i><small>${C.sub}</small></div>
- <div class="cards"><div class="pc r z">${I('groom','Ảnh chú rể')}<div><span class="sc">Chú rể</span><b>${C.groom.name.toUpperCase()}</b></div></div>
- <div class="pc r z">${I('bride','Ảnh cô dâu')}<div><span class="sc">Cô dâu</span><b>${C.bride.name.toUpperCase()}</b></div></div></div></section>
-<section class="w"><div class="fam r">${fam({t:'NHÀ TRAI',...C.groom})}${fam({t:'NHÀ GÁI',...C.bride})}</div>
- <div class="mono r z"><svg viewBox="0 0 150 200"><ellipse cx="75" cy="100" rx="62" ry="92" pathLength="1"/><text x="40" y="95">${ini(C.groom.name)}</text><text x="68" y="150">${ini(C.bride.name)}</text></svg></div>
- <div class="inv r">Trân trọng kính mời</div><div class="guest r wp">${to}</div><div class="inv r">tới dự Thánh lễ Hôn phối và Tiệc cưới<br>chung vui cùng chúng tôi</div>
+ <div class="cards"><div class="pc r z">${I('groom','Ảnh chú rể')}<div><span class="sc">${u('grL')}</span><b>${C.groom.name.toUpperCase()}</b></div></div>
+ <div class="pc r z">${I('bride','Ảnh cô dâu')}<div><span class="sc">${u('brL')}</span><b>${C.bride.name.toUpperCase()}</b></div></div></div></section>
+<section class="w"><div class="fam r">${fam(u('famG'),C.groom)}${fam(u('famB'),C.bride)}</div>
+ <div class="mono r z">${monoSVG()}</div>
+ <div class="inv r">${u('inv1')}</div><div class="guest r wp">${guest}</div><div class="inv r">${u('inv2')}</div>
  <div class="nm r">${C.groom.full}<i>and</i>${C.bride.full}</div>
- <div class="dt r"><b>${hourLbl}</b><div class="wh"><span class="wl" data-n="${D.getDate()}"></span><span class="wl" data-n="${D.getMonth()+1}"></span><span class="wl" data-n="${D.getFullYear()%100}"></span></div><b>${WD[D.getDay()]}</b></div>
- <div class="ln r">${C.lunar}</div>
+ <div class="dt r"><b>${hourLbl()}</b><div class="wh"><span class="wl" data-n="${D.getDate()}"></span><span class="wl" data-n="${D.getMonth()+1}"></span><span class="wl" data-n="${D.getFullYear()%100}"></span></div><b>${u('wd')[D.getDay()]}</b></div>
+ <div class="ln r">${tr(C.lunar)}</div>
  ${venues}</section>
 <section class="ban" data-p>${I('banner','Ảnh Just Married')}<div class="tt r"><span class="sc wp" style="display:block">Just</span><b>MARRIED</b></div></section>
 <section class="cal" id="cal"><div class="r z"><div class="yr">${D.getFullYear()}<i class="wp">${MN[D.getMonth()]}</i></div></div>
  <div class="cg r">${cal}</div><div class="r" style="font-size:17px;line-height:1.5">We'll be sharing a home and a life<br>together in</div><div class="cd r" id="cd"></div></section>
 <section class="tl" data-p>${I('timeline','Ảnh timeline')}<span class="sc wp">Timeline</span>${FL('left:32px;top:90px;width:70px')}${FL('left:20px;top:240px;width:90px')}
- <div class="ti">${C.timeline.map((x,i)=>`<div class="r l" style="--d:${.3+i*.45}s"><b>${x[0]}</b>${x[1]}</div>`).join('')}</div>
+ <div class="ti">${C.timeline.map((x,i)=>`<div class="r l" style="--d:${.3+i*.45}s"><b>${x[0]}</b>${tr(x[1])}</div>`).join('')}</div>
  <div class="dc r"><span class="sc">Dress code</span><div class="cs">${C.dress.map(c=>`<i style="background:${c}"></i>`).join('')}</div></div></section>
-<section class="w ev"><h2 class="r">Thánh Lễ và Tiệc Cưới</h2>${evs}</section>
+<section class="w ev"><h2 class="r">${u('evh')}</h2>${evs}</section>
 <section style="padding-top:20px"><div class="col"><div class="r" style="--d:.1s">${I('c1','Ảnh 1')}</div><div class="r" style="--d:.35s">${I('c2','Ảnh 2')}</div><div class="r" style="--d:.6s">${I('c3','Ảnh 3')}</div></div><div class="mem sc wp">Our Memories</div></section>
 <section class="gh"><div class="sc r rt">of LOVE</div><h3 class="r l">GOLDEN HOUR</h3><p class="r">Our wedding album captures the gentle glow of love – moments of laughter, tenderness, and forever promises, wrapped in a dreamy elegance that will never fade</p></section>
-<section class="gl" id="gl">${gk}</section><div class="mo" id="mo">XEM THÊM<i></i></div>
-<section class="w gb"><h2 class="wp">Sổ lưu bút</h2><p class="r">Cảm ơn bạn rất nhiều vì đã gửi những lời chúc mừng tốt đẹp nhất đến đám cưới của chúng tôi!</p>
- <form class="fm r" id="gf"><input name="name" placeholder="Tên của bạn" required><textarea name="msg" placeholder="Gửi lời chúc tới cô dâu chú rể" required></textarea><button>GỬI LỜI CHÚC</button></form></section>
-<section class="gf">${I('gift','Ảnh hộp mừng cưới')}<div><div class="sc wp">Hộp mừng cưới</div><p class="r">Cảm ơn tình cảm của mọi người đã dành cho chúng mình!</p></div>
+<section class="gl" id="gl">${gk}</section><div class="mo" id="mo">${u('more')}<i></i></div>
+<section class="w gb"><h2 class="wp">${u('gbH')}</h2><p class="r">${u('gbP')}</p>
+ <form class="fm r" id="gf"><input name="name" placeholder="${u('yname')}" required><textarea name="msg" placeholder="${u('wishPh')}" required></textarea><button>${u('wishB')}</button></form></section>
+<section class="gf">${I('gift','Ảnh hộp mừng cưới')}<div><div class="sc wp">${u('giftH')}</div><p class="r">${u('giftP')}</p></div>
  <div class="gx" id="gx"><svg viewBox="0 0 80 70"><rect x="10" y="26" width="60" height="38" rx="3"/><rect x="6" y="16" width="68" height="14" rx="3"/><path d="M40 16v48M40 16C28 2 18 6 24 12c4 4 16 4 16 4zM40 16C52 2 62 6 56 12c-4 4-16 4-16 4z"/></svg></div></section>
-<section class="w rs" id="rsvp"><h2 class="wp">Bạn sẽ tham dự chứ?</h2><p class="r">Hãy xác nhận sự có mặt của bạn trước để chúng mình<br>chuẩn bị đón tiếp một cách chu đáo nhất.<br>Trân trọng!</p>
- <form class="fm r" id="rf"><div class="row"><input name="name" placeholder="Tên của bạn" required><input name="phone" type="tel" inputmode="numeric" placeholder="Số điện thoại" required></div>
- <div class="ra"><label><input type="radio" name="ok" value="Có" checked>Có, tôi sẽ đến</label><label><input type="radio" name="ok" value="Không">Xin lỗi, tôi bận mất rồi</label></div>
- <div class="row"><select name="where" id="wh">${C.events.map(e=>`<option>${e.t}</option>`).join('')}<option>Cả hai</option></select><select name="with"><option>Tôi tới 1 mình</option><option>Tôi đi cùng 1 người</option><option>Tôi đi cùng 2 người</option><option>Tôi đi cùng 3 người</option></select></div>
- <textarea name="note" style="height:90px" placeholder="Lời nhắn"></textarea><button>Gửi Xác Nhận</button></form></section>
+<section class="w rs" id="rsvp"><h2 class="wp">${u('rsH')}</h2><p class="r">${u('rsP')}</p>
+ <form class="fm r" id="rf"><div class="row"><input name="name" placeholder="${u('yname')}" required><input name="phone" type="tel" inputmode="numeric" placeholder="${u('phone')}" required></div>
+ <div class="ra"><label><input type="radio" name="ok" value="Có" checked>${u('yes')}</label><label><input type="radio" name="ok" value="Không">${u('no')}</label></div>
+ <div class="row"><select name="where" id="wh">${C.events.map(e=>`<option>${tr(e.t)}</option>`).join('')}<option>${u('both')}</option></select><select name="with">${u('w').map(x=>`<option>${x}</option>`).join('')}</select></div>
+ <textarea name="note" style="height:90px" placeholder="${u('note')}"></textarea><button>${u('send')}</button></form></section>
 <section class="foot" data-p>${I('footer','Ảnh cuối trang')}</section>`;
 
-/* ---- bánh xe số (ngày/tháng/năm) ---- */
-$$('.wl').forEach(w=>{const t=+w.dataset.n;w.innerHTML='<div class="wc">'+Array.from({length:t+1},(_,i)=>`<b>${pad(i)}</b>`).join('')+'</div>'});
-function roll(el){$$('.wl',el).forEach((w,i)=>{const c=$('.wc',w),t=+w.dataset.n;setTimeout(()=>{c.style.transform=`translateY(${-t*1.12}em)`},150+i*250)})}
+ /* khôi phục nội dung khách đã nhập */
+ $$('#app form').forEach(f=>$$('[name]',f).forEach(e=>{const k=f.id+'.'+e.name+(e.type==='radio'?'.'+e.value:'');if(!(k in st))return;
+  if(e.type==='radio')e.checked=st[k];else if(e.tagName==='SELECT')e.selectedIndex=st[k];else e.value=st[k]}));
 
-/* ---- reveal + parallax ---- */
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);if(e.target.matches('.dt'))roll(e.target)}}),{threshold:.18});
-$$('.r,.wp,.gl div,.mono,.cal,.tl').forEach(e=>io.observe(e));
-const ps2=$$('[data-p]');const pl=()=>{const h=innerHeight;ps2.forEach(s=>{const r=s.getBoundingClientRect();if(r.bottom<0||r.top>h)return;const im=$('img',s);im.style.transform=`translateY(${(r.top+r.height/2-h/2)*-.14}px)`})};
-addEventListener('scroll',pl,{passive:true});pl();
-$$('.gl div').forEach((d,i)=>d.style.transitionDelay=(i%2)*.18+'s');
-/* cánh hoa rơi */
-const cs=$('#cal');for(let i=0;i<14;i++){const p=document.createElement('i');p.className='pt';p.style.cssText=`left:${Math.random()*100}%;animation-duration:${7+Math.random()*7}s;animation-delay:${-Math.random()*12}s;transform:scale(${.6+Math.random()*.7})`;cs.appendChild(p)}
-/* đếm ngược */
-const cd=$('#cd');(function t(){let s=Math.max(0,Math.floor((D-Date.now())/1e3));const v=[Math.floor(s/86400),Math.floor(s%86400/3600),Math.floor(s%3600/60),s%60],l=['ngày','giờ','phút','giây'];cd.innerHTML=v.map((x,i)=>`<div>${pad(x)}<small>${l[i]}</small></div>`).join('');setTimeout(t,1000)})();
+ /* bánh xe số */
+ $$('.wl').forEach(w=>{const t=+w.dataset.n;w.innerHTML='<div class="wc">'+Array.from({length:t+1},(_,i)=>`<b>${pad(i)}</b>`).join('')+'</div>'});
+ $$('.gl div').forEach((d,i)=>d.style.transitionDelay=(i%2)*.18+'s');
+ /* cánh hoa rơi */
+ const cs=$('#cal');for(let i=0;i<14;i++){const p=document.createElement('i');p.className='pt';p.style.cssText=`left:${Math.random()*100}%;animation-duration:${7+Math.random()*7}s;animation-delay:${-Math.random()*12}s;transform:scale(${.6+Math.random()*.7})`;cs.appendChild(p)}
+ /* gallery đã mở */
+ if(galOpen){$('#gl').classList.add('open');$('#mo').style.display='none'}
+
+ /* hiệu ứng cuộn */
+ io.disconnect();
+ const rv=$$('.r,.wp,.gl div,.mono,.cal,.tl');
+ if(instant){   // đổi ngôn ngữ: hiện luôn trạng thái cuối, không chạy lại hiệu ứng
+  document.body.classList.add('inst');
+  rv.forEach(e=>e.classList.add('in'));
+  $$('.wl').forEach(w=>{const c=$('.wc',w);c.style.transition='none';c.style.transform=`translateY(${-(+w.dataset.n)*1.12}em)`});
+ }else rv.forEach(e=>io.observe(e));
+ ps2=$$('[data-p]');pl();
+
+ /* sự kiện */
+ $('#gx').onclick=()=>modal(`<div class="md"><button class="x2">×</button><h3>${u('giftH')}</h3><p>${u('giftM')}</p><div class="gc">${gc(C.gift.groom,u('gG'))}${gc(C.gift.bride,u('gB'))}</div></div>`);
+ $('#mo').onclick=()=>{galOpen=true;$('#gl').classList.add('open');$$('.x').forEach((d,i)=>setTimeout(()=>d.classList.add('in'),90*i));$('#mo').style.display='none'};
+ [['gf','wish','wishB','thxW'],['rf','rsvp','send','thxR']].forEach(([id,t,bk,mk])=>{const f=$('#'+id),b=$('button',f);
+  f.onsubmit=e=>{e.preventDefault();b.textContent='• • •';send(t,f);setTimeout(()=>{b.textContent=u(bk);f.reset();modal(`<div class="md al"><b>${u('notice')}</b><p>${u(mk)}</p><button class="x2" style="position:static;font:600 14px Montserrat;color:#222">OK</button></div>`)},900)}});
+ if(instant)scrollTo(0,y);
+}
+const gc=(g,t)=>`<div><b>${t}</b><img src="${g.qr||ph('QR','#f1f1f1','#d6d6d6','#222')}" alt="QR"><div>${g.bank}<br>${g.name}<br>${g.num}</div><a href="${g.qr||ph('QR')}" download="qr-${t}.png"><button style="border:0;background:#eee;border-radius:20px;padding:6px 10px;font:11px Montserrat;margin:6px 2px;cursor:pointer">${u('qr')}</button></a><button data-cp="${g.num}">${u('cp')}</button></div>`;
+
+/* ---- parallax ---- */
+const pl=()=>{const h=innerHeight;ps2.forEach(s=>{const r=s.getBoundingClientRect();if(r.bottom<0||r.top>h)return;const im=$('img',s);im.style.transform=`translateY(${(r.top+r.height/2-h/2)*-.14}px)`})};
+addEventListener('scroll',pl,{passive:true});
+
+/* ---- đếm ngược ---- */
+setInterval(()=>{const cd=$('#cd');if(!cd)return;let s=Math.max(0,Math.floor((D-Date.now())/1e3));const v=[Math.floor(s/86400),Math.floor(s%86400/3600),Math.floor(s%3600/60),s%60],l=u('cdl');cd.innerHTML=v.map((x,i)=>`<div>${pad(x)}<small>${l[i]}</small></div>`).join('')},1000);
 
 /* ---- lightbox: hiện ngay bản nhẹ, rồi thay bằng bản GỐC khi tải xong ---- */
 const lb=$('#lb'),md=$('#md'),lbImg=$('img',lb);
@@ -364,23 +461,20 @@ function openLB(img){
  }else lb.classList.remove('ld');
 }
 function closeLB(){lb.classList.remove('on','ld');lbToken++}
+const modal=h=>{md.innerHTML=h;md.classList.add('on')};
 document.addEventListener('click',e=>{
+ const lg=e.target.closest('[data-lang]');if(lg){setLang(lg.dataset.lang);return}
  const z=e.target.closest('.pc,.zm');if(z&&!e.target.closest('.ov'))openLB($('img',z)||z);
  else if(e.target.closest('#lb'))closeLB();
  if(e.target===md||e.target.closest('.md .x2'))md.classList.remove('on');
  const rv=e.target.closest('[data-rv]');if(rv){$('#wh').value=rv.dataset.rv;$('#rsvp').scrollIntoView()}
  const mp=e.target.closest('[data-mp]');if(mp)open(mapUrl(mp.dataset.mp),'_blank');
- const cp=e.target.closest('[data-cp]');if(cp){navigator.clipboard?.writeText(cp.dataset.cp);cp.textContent='Đã copy ✓'}});
+ const cp=e.target.closest('[data-cp]');if(cp){navigator.clipboard?.writeText(cp.dataset.cp);cp.textContent=u('cpd')}});
 addEventListener('keydown',e=>{if(e.key==='Escape')closeLB()});
-const modal=h=>{md.innerHTML=h;md.classList.add('on')};
-$('#gx').onclick=()=>modal(`<div class="md"><button class="x2">×</button><h3>Hộp mừng cưới</h3><p>Vợ chồng xin cảm ơn tất cả tình cảm của mọi người ạ ❤️</p><div class="gc">${gc(C.gift.groom,'MỪNG CƯỚI ĐẾN CHÚ RỂ')}${gc(C.gift.bride,'MỪNG CƯỚI ĐẾN CÔ DÂU')}</div></div>`);
-$('#mo').onclick=()=>{$('#gl').classList.add('open');$$('.x').forEach((d,i)=>setTimeout(()=>d.classList.add('in'),90*i));$('#mo').style.display='none'};
 
 /* ---- form ---- */
-const send=(type,f)=>{const d=Object.fromEntries(new FormData(f));d.type=type;d.time=new Date().toISOString();try{const a=JSON.parse(localStorage.getItem('wedding')||'[]');a.push(d);localStorage.setItem('wedding',JSON.stringify(a))}catch(_){}
+const send=(type,f)=>{const d=Object.fromEntries(new FormData(f));d.type=type;d.lang=lang;d.time=new Date().toISOString();try{const a=JSON.parse(localStorage.getItem('wedding')||'[]');a.push(d);localStorage.setItem('wedding',JSON.stringify(a))}catch(_){}
  if(C.endpoint)fetch(C.endpoint,{method:'POST',mode:'no-cors',body:JSON.stringify(d)}).catch(()=>{})};
-[['gf','wish','GỬI LỜI CHÚC','Cảm ơn bạn đã gửi lời chúc!'],['rf','rsvp','Gửi Xác Nhận','Cảm ơn bạn đã xác nhận! Hẹn gặp bạn nhé.']].forEach(([id,t,lb2,msg])=>{const f=$('#'+id),b=$('button',f);
- f.onsubmit=e=>{e.preventDefault();b.textContent='• • •';send(t,f);setTimeout(()=>{b.textContent=lb2;f.reset();modal(`<div class="md al"><b>Thông báo</b><p>${msg}</p><button class="x2" style="position:static;font:600 14px Montserrat;color:#222">OK</button></div>`)},900)}});
 
 /* ---- nhạc ---- */
 const au=new Audio(C.music||'');au.loop=true;const mu=$('#mu');
@@ -393,7 +487,14 @@ function tryMusic(){
  });
 }
 
-/* ---- TỰ ĐỘNG mở thiệp (không cần chạm) ---- */
+/* ---- công tắc ngôn ngữ ---- */
+function syncTg(){$$('#tg [data-lang]').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang))}
+function setLang(l){if(l===lang||!U[l])return;lang=l;store.set('w_lang',l);document.documentElement.lang=l;syncTg();build(true)}
+document.documentElement.lang=lang;syncTg();
+document.title=`${C.groom.name} & ${C.bride.name} — Wedding`;
+
+/* ---- dựng trang + TỰ ĐỘNG mở thiệp (không cần chạm) ---- */
+build(false);
 const env=$('#env'),root=document.documentElement;
 function start(){document.body.classList.add('go');pl()}
 if(matchMedia('(prefers-reduced-motion:reduce)').matches){env.remove();start();tryMusic()}
